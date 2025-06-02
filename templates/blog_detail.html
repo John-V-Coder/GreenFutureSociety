@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5 d-flex justify-content-center align-items-center text-light">
+  <div class="card bg-dark text-light shadow-lg rounded-4 w-100" style="max-width: 900px;">
+    
+    {% if post.thumbnail %}
+    <img src="{{ post.thumbnail.url }}" class="card-img-top rounded-top" style="max-height: 400px; object-fit: cover;" alt="{{ post.title }}">
+    {% endif %}
+    
+    <div class="card-body p-4">
+      <h2 class="card-title fw-bold">{{ post.title }}</h2>
+      <p class="text-muted small mb-4">Published on {{ post.published_at|date:"F j, Y" }}</p>
+      
+      <div class="card-text" style="color: white;">
+        {{ post.render_markdown|safe }}
+      </div>
+      
+      <div class="text-end mt-5">
+        <a href="{% url 'blog' %}" class="btn btn-success">← Back to Blog</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

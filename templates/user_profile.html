@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <h2 class="text-center mb-4 text-light">
+        🌿 Welcome, {{ request.user.get_full_name|default:request.user.username }}
+    </h2>
+
+    <!-- User Info -->
+    <div class="card mb-4 bg-dark text-light shadow-sm">
+        <div class="card-body">
+            <h5>User Information</h5>
+            <p><strong>Email:</strong> {{ request.user.email }}</p>
+            <p><strong>Username:</strong> {{ request.user.username }}</p>
+        </div>
+    </div>
+
+    <!-- Total Trees Planted -->
+    <div class="alert alert-success text-center mb-4 shadow-sm" role="alert">
+        🌱 <strong>Total Trees You’ve Planted:</strong> {{ total_trees }}
+    </div>
+
+    <!-- Orders -->
+    <div class="card bg-dark text-light shadow-sm">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Your Tree Planting Orders</h5>
+        </div>
+        <div class="card-body">
+            {% for status, orders in status_groups.items %}
+                {% if orders %}
+                    <h5 class="mt-4 text-capitalize">{{ status }} Orders</h5>
+                    <div class="accordion" id="accordion-{{ status }}">
+                        {% for order in orders %}
+                            <div class="accordion-item mb-2 bg-secondary text-light">
+                                <h2 class="accordion-header" id="heading{{ order.id }}">
+                                    <button class="accordion-button bg-dark text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ order.id }}">
+                                        Order #{{ order.id }}
+                                        <span class="ms-2 badge 
+                                            {% if order.status|lower == 'pending' %}bg-warning
+                                            {% elif order.status|lower == 'confirmed' %}bg-info
+                                            {% elif order.status|lower == 'completed' %}bg-success
+                                            {% else %}bg-secondary{% endif %}">
+                                            {{ order.get_status_display }}
+                                        </span>
+                                    </button>
+                                </h2>
+                                <div id="collapse{{ order.id }}" class="accordion-collapse collapse">
+                                    <div class="accordion-body">
+                                        <p><strong>Location:</strong> {{ order.planting_location }}</p>
+                                        <p><strong>Instructions:</strong> {{ order.special_instructions|default:"None" }}</p>
+                                        <p><strong>Placed On:</strong> {{ order.created_at|date:"M d, Y H:i" }}</p>
+
+                                        <p><strong>Tree Items:</strong></p>
+                                        {% if order.parsed_items %}
+                                            <div class="d-flex flex-wrap gap-3">
+                                                {% for item in order.parsed_items %}
+                                                    <div class="card text-dark" style="width: 12rem;">
+                                                        {% if item.image_url %}
+                                                            <img src="{{ item.image_url }}" class="card-img-top" style="height: 120px; object-fit: cover;" alt="{{ item.name }}">
+                                                        {% endif %}
+                                                        <div class="card-body p-2 text-center">
+                                                            <h6 class="card-title mb-1 text-dark">{{ item.name }}</h6>
+                                                            <p class="card-text mb-0 text-muted">Quantity: {{ item.quantity }}</p>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
+                                        {% else %}
+                                            <p class="text-muted fst-italic">No tree items in this order.</p>
+                                        {% endif %}
+
+                                        <!-- Action Buttons -->
+                                        <div class="mt-3 d-flex flex-wrap gap-2">
+                                            <a href="{% url 'order_detail' order.id %}" class="btn btn-sm btn-outline-light">View</a>
+                                            <a href="{% url 'download_receipt' order.id %}" class="btn btn-sm btn-outline-secondary">Receipt</a>
+                                            {% if order.status|lower == 'pending' %}
+                                                <a href="{% url 'edit_order' order.id %}" class="btn btn-sm btn-outline-info">Edit</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <!-- Pagination -->
+            {% if page_obj.has_other_pages %}
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">&laquo;</span></li>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                            {% else %}
+                                <li class="page-item"><a class="page-link" href="?page={{ num }}">{{ num }}</a></li>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled"><span class="page-link">&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

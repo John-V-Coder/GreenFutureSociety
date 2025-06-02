@@ -1,0 +1,139 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Checkout - Tree Planting{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="text-center mb-4">Checkout</h2>
+    
+    <!-- Steps Navigation -->
+    <div class="d-flex justify-content-center mb-4">
+        <div class="step me-3" id="step3">
+            <span class="step-number">3</span>
+            <span class="step-title">Checkout</span>
+        </div>
+        <div class="step" id="step4">
+            <span class="step-number">4</span>
+            <span class="step-title">Confirmation</span>
+        </div>
+    </div>
+
+    <!-- Empty Cart Message -->
+    <div id="emptyCartMsg" class="alert alert-warning d-none text-center">
+        Your planting request is empty. 
+        <a href="{% url 'index' %}" class="alert-link">Select trees to plant</a>.
+    </div>
+
+    <!-- Cart Table -->
+    <div class="card border-success mb-4" id="cartTableContainer" style="display: none;">
+        <div class="card-header bg-success text-white">
+            <h5 class="mb-0">Step 1: Review Your Tree Selection</h5>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered table-striped text-center align-middle">
+                <thead class="table-success">
+                    <tr>
+                        <th>Tree Type</th>
+                        <th>Quantity</th>
+                        <th>Instructions</th>
+                        <th>CO₂ Savings (est.)</th>
+                    </tr>
+                </thead>
+                <tbody id="treeItems">
+                    <!-- Populated by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Checkout Form -->
+    <form method="POST" action="/checkout/">
+        {% csrf_token %}
+        <input type="hidden" name="itemsJson" id="itemsJson">
+
+        <div class="card border-info mb-4">
+            <div class="card-header bg-info text-white">
+                <h5 class="mb-0">Step 2: Your Information</h5>
+            </div>
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="email" class="form-label">Email</label>
+                        <input name="email" required type="email" class="form-control" id="email" value="{{ request.user.email }}" readonly>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input name="name" required type="text" class="form-control" id="name" placeholder="John Green">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input name="phone" required type="text" class="form-control" id="phone" placeholder="1234567890">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="address" class="form-label">Address</label>
+                        <textarea name="address" required class="form-control" id="address" rows="3" placeholder="Planting site or delivery address"></textarea>
+                    </div>
+                    <div class="col-md-12">
+                        <label for="notes" class="form-label">Special Instructions</label>
+                        <textarea name="notes" class="form-control" id="notes" rows="2" placeholder="e.g., Plant near water source"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confirm Button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-success btn-lg">Confirm & Plant</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block body %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const username = "{{ request.user.username|escapejs }}";
+    const cartKey = "cart_" + username;
+    const cart = JSON.parse(localStorage.getItem(cartKey)) || {};
+
+    const treeItems = document.getElementById('treeItems');
+    const emptyMsg = document.getElementById('emptyCartMsg');
+    const cartTableContainer = document.getElementById('cartTableContainer');
+    const itemsJsonField = document.getElementById('itemsJson');
+
+    for (const id in cart) {
+        const imgElement = document.querySelector(`#img${id}`);
+        const imageUrl = imgElement ? imgElement.src : null;
+        if (cart[id].length < 4) {
+            cart[id][3] = imageUrl;
+        }
+    }
+
+    if (Object.keys(cart).length === 0) {
+        emptyMsg.classList.remove('d-none');
+        cartTableContainer.style.display = 'none';
+    } else {
+        emptyMsg.classList.add('d-none');
+        cartTableContainer.style.display = 'block';
+
+        let rows = '';
+        for (const [id, [qty, name, price, imageUrl]] of Object.entries(cart)) {
+            const instruction = "Plant in well-drained soil";
+            const co2 = (qty * 21).toFixed(1);
+            rows += `
+                <tr>
+                    <td>${name}</td>
+                    <td>${qty}</td>
+                    <td>${instruction}</td>
+                    <td>${co2} kg</td>
+                </tr>`;
+        }
+        treeItems.innerHTML = rows;
+        itemsJsonField.value = JSON.stringify(cart);
+    }
+
+    console.log("Checkout Page Cart:", cart);
+});
+</script>
+{% endblock %}

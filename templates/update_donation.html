@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Update Donation | Green Future Society{% endblock title %}
+
+{% block content %}
+<div class="container-fluid bg-success text-white py-5 text-center shadow-lg">
+  <h1 class="display-5 fw-bold">Update Your Donation</h1>
+  <p class="lead">Modify your previous donation details.</p>
+</div>
+{% endblock content %}
+
+{% block body %}
+<section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+
+        {% if message %}
+          <div class="alert alert-success">{{ message }}</div>
+        {% endif %}
+
+        <div class="card bg-dark text-light shadow-lg border-success rounded-4">
+          <div class="card-body p-4">
+            <h2 class="mb-4 text-success text-center">🌱 Update Donation</h2>
+
+            <form method="POST" enctype="multipart/form-data" action="{% url 'donation_update' donation.id %}" id="donationForm">
+              {% csrf_token %}
+
+              <!-- Name -->
+              <div class="mb-3">
+                <label for="full_name" class="form-label">Full Name*</label>
+                <input type="text" class="form-control" id="full_name" name="full_name" value="{{ donation.full_name }}" required>
+              </div>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label for="email" class="form-label">Email Address*</label>
+                <input type="email" class="form-control" id="email" name="email" value="{{ donation.email }}" required>
+              </div>
+
+              <!-- Amount -->
+              <div class="mb-3">
+                <label for="amount" class="form-label">Donation Amount (KES)*</label>
+                <input type="number" class="form-control" id="amount" name="amount" value="{{ donation.amount }}" min="50" step="10" required>
+              </div>
+
+              <!-- Message -->
+              <div class="mb-3">
+                <label for="message" class="form-label">Message or Dedication (optional)</label>
+                <textarea class="form-control" id="message" name="message" rows="3">{{ donation.message }}</textarea>
+              </div>
+
+              <!-- Payment Method -->
+              <div class="mb-4">
+                <label class="form-label">Select Payment Method*</label>
+                <div class="form-check text-light">
+                  <input class="form-check-input" type="radio" name="payment_method" id="mpesa" value="mpesa"
+                    {% if donation.payment_method == 'mpesa' %}checked{% endif %}>
+                  <label class="form-check-label" for="mpesa">M-Pesa</label>
+                </div>
+                <div class="form-check text-light">
+                  <input class="form-check-input" type="radio" name="payment_method" id="bank" value="bank"
+                    {% if donation.payment_method == 'bank' %}checked{% endif %}>
+                  <label class="form-check-label" for="bank">Bank Transfer</label>
+                </div>
+              </div>
+
+              <!-- M-Pesa Info -->
+              <div id="mpesaDetails" class="alert alert-info" style="display: none;">
+                <h5 class="fw-bold">M-Pesa Donation Info</h5>
+                <p><strong>Company:</strong> Green Future Society</p>
+                <p><strong>Till Number:</strong> <code>719980</code></p>
+                <p><strong>Phone Number:</strong> 0701993334</p>
+              </div>
+
+              <!-- Bank Details -->
+              <div id="bankTransferDetails" class="alert alert-success" style="display: none;">
+                <h5 class="fw-bold">Bank Transfer Details</h5>
+                <p><strong>Bank Name:</strong> EcoBank Kenya</p>
+                <p><strong>Account Name:</strong> Green Future Society</p>
+                <p><strong>Account Number:</strong> 1234567890</p>
+                <p><strong>Branch:</strong> Nairobi CBD</p>
+                <p><strong>SWIFT Code:</strong> ECOCKENX</p>
+
+                <!-- Upload Proof -->
+                <div class="mb-3 mt-3">
+                  <label for="proof" class="form-label">Upload Payment Proof (optional)</label>
+                  <input type="file" class="form-control" id="proof" name="proof" accept="image/*,application/pdf">
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <div class="d-grid">
+                <button type="submit" class="btn btn-success btn-lg">
+                  <i class="bi bi-check-circle me-2"></i> Update Donation
+                </button>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Script to toggle payment instructions -->
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const mpesaRadio = document.getElementById("mpesa");
+    const bankRadio = document.getElementById("bank");
+    const mpesaDetails = document.getElementById("mpesaDetails");
+    const bankDetails = document.getElementById("bankTransferDetails");
+
+    function togglePaymentDetails() {
+      if (mpesaRadio.checked) {
+        mpesaDetails.style.display = "block";
+        bankDetails.style.display = "none";
+      } else if (bankRadio.checked) {
+        mpesaDetails.style.display = "none";
+        bankDetails.style.display = "block";
+      } else {
+        mpesaDetails.style.display = "none";
+        bankDetails.style.display = "none";
+      }
+    }
+
+    document.querySelectorAll('input[name="payment_method"]').forEach(input => {
+      input.addEventListener('change', togglePaymentDetails);
+    });
+
+    togglePaymentDetails(); // on load
+  });
+</script>
+{% endblock body %}

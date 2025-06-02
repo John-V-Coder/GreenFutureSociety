@@ -1,0 +1,195 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Tree Planting{% endblock %}
+
+{% block content %}
+<div class="container py-4 mt-4">
+  <div class="card bg-white text-dark border-success shadow-lg rounded-4 p-4">
+    <div class="text-center mb-4">
+      <h1 class="display-5 fw-bold text-success">Let's Plant Trees 🌱</h1>
+      <p class="lead">Join our mission to make the world greener, one tree at a time.</p>
+      <div class="progress-tracker">
+        <div class="step" id="step1">
+          <span class="step-number">1</span>
+          <span class="step-title">Choose Tree</span>
+        </div>
+        <div class="step" id="step2">
+          <span class="step-number">2</span>
+          <span class="step-title">Add to Cart</span>
+        </div>
+      </div> <!-- Added missing closing div -->
+    </div>
+
+    <div class="section-title text-center my-5">
+      <h2 class="fw-bold text-success">TREES AVAILABLE</h2>
+      <p class="text-muted">Choose from our wide variety of trees</p>
+    </div>
+    
+    {% for product, range, nSlides in allProds %}
+      <div class="mb-5">
+        <h3 class="text-center py-3 bg-success bg-opacity-10 text-success rounded-3">
+          {{ product.0.category }} Trees
+        </h3>
+    
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+          {% for i in product %}
+            <div class="col">
+              <div class="card bg-light border border-success shadow h-100 text-dark position-relative">
+    
+                <!-- Product Image -->
+                {% if i.image %}
+                  <img src="/media/{{ i.image }}" class="card-img-top p-3" alt="{{ i.product_name }}" height="150px" width="150px" style="height: 200px; object-fit: contain;" id="img{{ i.id }}"/>
+                {% endif %}
+    
+                <!-- Badge -->
+                {% if i.tag == "new" %}
+                  <span class="badge bg-success position-absolute top-0 start-0 m-2">New</span>
+                {% elif i.tag == "popular" %}
+                  <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Popular</span>
+                {% endif %}
+    
+                <!-- Card Body -->
+                <div class="card-body d-flex flex-column">
+                  <h5 class="card-title text-success" id="namepr{{ i.id }}">{{ i.product_name }}</h5>
+    
+                  {% if i.price %}
+                    <span id="pricepr{{ i.id }}" style="display:none;">{{ i.price }}</span>
+                  {% endif %}
+    
+                  <p class="card-text text-muted">{{ i.desc|slice:"0:50" }}...</p>
+    
+                  <div id="divpr{{ i.id }}" class="divpr mt-auto">
+                    <button id="pr{{ i.id }}" class="btn btn-success w-100 cart">Plant This</button>
+                  </div>
+    
+                  <a href="{{ i.image.url }}" class="btn btn-outline-success w-100 mt-2" target="_blank">View Details</a>
+                </div>
+    
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    
+  </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const username = "{{ request.user.username|escapejs }}";
+  const cartKey = "cart_" + username;
+  let cart = JSON.parse(localStorage.getItem(cartKey)) || {};
+
+  const popcartEl = document.getElementById('popcart');
+  if (popcartEl) {
+    new bootstrap.Popover(popcartEl, {
+      html: true,
+      sanitize: false,
+      content: generatePopoverContent(cart),
+      placement: 'bottom',
+      trigger: 'click'
+    });
+  }
+
+  function updateCart() {
+    let sum = 0;
+    for (let item in cart) {
+      sum += cart[item][0];
+      const div = document.getElementById('divpr' + item);
+      if (div) {
+        div.innerHTML = `
+          <div class="btn-group w-100">
+            <button id="${item}" class="btn btn-sm btn-danger minus">-</button>
+            <span class="btn btn-sm disabled">${cart[item][0]}</span>
+            <button id="plus${item}" class="btn btn-sm btn-success plus">+</button>
+          </div>`;
+      }
+    }
+    const count = document.getElementById('cartcount');
+    if (count) count.textContent = sum;
+    localStorage.setItem(cartKey, JSON.stringify(cart));
+
+    if (popcartEl && bootstrap.Popover.getInstance(popcartEl)) {
+      bootstrap.Popover.getInstance(popcartEl).setContent({
+        '.popover-body': generatePopoverContent(cart)
+      });
+    }
+  }
+
+  document.addEventListener('click', function (e) {
+    if (e.target.classList.contains('cart')) {
+      const id = e.target.id.slice(2);
+      const name = document.getElementById('namepr' + id)?.textContent || "Unknown Tree";
+      const price = parseFloat(document.getElementById('pricepr' + id)?.textContent || 0);
+      const image = document.getElementById('img' + id)?.src || "";
+
+      cart[id] = cart[id] ? [cart[id][0] + 1, name, price, image] : [1, name, price, image];
+      updateCart();
+    }
+
+    if (e.target.classList.contains('minus')) {
+      const id = e.target.id;
+      if (cart[id][0] <= 1) {
+        delete cart[id];
+        document.getElementById('divpr' + id).innerHTML = `<button id="pr${id}" class="btn btn-success w-100 cart">Plant This</button>`;
+      } else {
+        cart[id][0] -= 1;
+      }
+      updateCart();
+    }
+
+    if (e.target.classList.contains('plus')) {
+      const id = e.target.id.replace('plus', '');
+      cart[id][0] += 1;
+      updateCart();
+    }
+  });
+
+  function generatePopoverContent(cart) {
+    if (Object.keys(cart).length === 0) {
+      return '<div class="p-2">Your cart is empty</div>';
+    }
+
+    let html = '<div class="p-2"><h6 class="fw-bold">Your Cart</h6><ul class="list-unstyled mb-2">';
+    let total = 0;
+
+    for (const [id, [qty, name, price]] of Object.entries(cart)) {
+      html += `<li>${name} × ${qty} — KES ${(price * qty).toFixed(2)}</li>`;
+      total += price * qty;
+    }
+
+    html += `</ul>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <strong>Total: KES ${total.toFixed(2)}</strong>
+      </div>
+      <div class="d-grid gap-2">
+        <a href="/checkout" class="btn btn-success btn-sm">Checkout</a>
+        <button onclick="window.clearCart()" class="btn btn-danger btn-sm">Clear Cart</button>
+      </div>
+    </div>`;
+
+    return html;
+  }
+
+  window.clearCart = function () {
+    cart = {};
+    localStorage.removeItem(cartKey);
+    updateCart();
+    document.querySelectorAll('.divpr').forEach(div => {
+      const id = div.id.replace('divpr', '');
+      div.innerHTML = `<button id="pr${id}" class="btn btn-success w-100 cart">Plant This</button>`;
+    });
+    if (popcartEl && bootstrap.Popover.getInstance(popcartEl)) {
+      bootstrap.Popover.getInstance(popcartEl).hide();
+    }
+  };
+
+  updateCart();
+});
+</script>
+{% endblock %}
