@@ -15,56 +15,48 @@ class Contact(models.Model):
         return self.name
     
 
-class Product(models.Model):
-    product_id = models.AutoField
-    product_name = models.CharField(max_length=100)
-    category = models.CharField(max_length=100, default="")
-    subcategory = models.CharField(max_length=50, default="")
-    desc = models.CharField(max_length=5000, default="")
-    image = models.ImageField(upload_to='images/images')
+class green_campaign(models.Model):
+    title = models.CharField(max_length=200)
+    description = RichTextField()
+    image = models.ImageField(upload_to='campaign_images/', blank=True, null=True)
+    start_date = models.DateTimeField(default=timezone.now)
+    end_date = models.DateTimeField()
 
     def __str__(self):
-        return self.product_name
-    
+        return self.title
 
-
-class Order(models.Model):
-    STATUS_CHOICES = [
-        ('pending', 'Pending'),
-        ('confirmed', 'Confirmed'),
-        ('completed', 'Completed'),
+class stories(models.Model):
+    CATEGORY_CHOICES = [
+        ('Woman', 'Woman'),
+        ('Youth', 'Youth'),
+        ('PWD', 'Person with Disability'),
     ]
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True, related_name='orders')
-    name = models.CharField(max_length=200)
-    email = models.EmailField()
-    phone = models.CharField(max_length=20)
-    planting_location = models.TextField()
-    items_json = models.TextField(help_text="JSON representation of ordered items")
-    special_instructions = models.TextField(blank=True, null=True)
-    created_at = models.DateTimeField(auto_now_add=True)
-    status = models.CharField(
-        max_length=20,
-        choices=STATUS_CHOICES,
-        default='pending'
-    )
-
-    class Meta:
-        ordering = ['-created_at']
-        verbose_name = 'Order'
-        verbose_name_plural = 'Orders'
-    def __str__(self):
-        return f"{self.name} - {self.created_at.strftime('%Y-%m-%d')} ({self.get_status_display()})"
-
-class OrderItem(models.Model):
-    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
-    product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField()
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length=20, choices=CATEGORY_CHOICES)
+    content = models.TextField()
+    image = models.ImageField(upload_to='story_images/', blank=True, null=True)
 
     def __str__(self):
-        return f"{self.quantity} x {self.product}"
+        return self.name
     
+class Event(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    date = models.DateField()
+    location = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.title
+
+class FarmingCourse(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    duration = models.CharField(max_length=100)
+    start_date = models.DateField()
+
+    def __str__(self):
+        return self.title
 
 class Donation(models.Model):
     PAYMENT_METHODS = [

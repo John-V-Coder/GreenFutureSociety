@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Farming Academy{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="text-3xl font-bold mb-4">Farming Academy</h1>
+    <p class="mb-6 text-lg">Welcome to the Green Future Society Farming Academy! We offer training and resources for women, youths, and persons with disabilities interested in sustainable farming.</p>
+
+    <h2 class="text-2xl font-semibold mb-4">Available Courses</h2>
+    {% if courses %}
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for course in courses %}
+                <div class="p-4 border rounded-lg shadow-lg bg-white">
+                    <h3 class="text-xl font-bold mb-2">{{ course.title }}</h3>
+                    <p class="mb-2">{{ course.description }}</p>
+                    <p><strong>Duration:</strong> {{ course.duration }}</p>
+                    <p><strong>Starts on:</strong> {{ course.start_date }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No courses available at the moment. Please check back soon.</p>
+    {% endif %}
+</div>
+{% endblock %}

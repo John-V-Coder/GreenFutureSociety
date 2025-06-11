@@ -1,18 +1,14 @@
 from django.contrib import admin
-from societyapp.models import Contact, Product, Order, Donation, BlogPost
+from societyapp.models import Contact, Donation, BlogPost, green_campaign, stories, Event
 # Register your models here.
 
 admin.site.register(Contact)
-admin.site.register(Product)
-admin.site.register(Order)
 admin.site.register(Donation)
 admin.site.register(BlogPost)
+admin.site.register(green_campaign)
+admin.site.register(stories)
+admin.site.register(Event)
 
-
-class OrderAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'status', 'created_at')
-    list_filter = ('status', 'created_at')
-    search_fields = ('name', 'email')
 
 
 class BlogPostAdmin(admin.ModelAdmin):

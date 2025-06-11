@@ -1,127 +1,41 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Seedling Supply System Services{% endblock title %}
+{% block title %}What we Do{% endblock title %}
 
 {% block content %}
-<div class="container py-5">
-  <div class="card bg-dark text-light border-success shadow-lg rounded-4 p-4">
-    <div class="text-center mb-4">
-      <h1 class="fw-bold text-success">Seedling Supply Services in Kenya</h1>
-      <p class="lead">Empowering farmers with quality seedlings and sustainable practices</p>
+ <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">What We Do</span>
+          <h2 class="display-4 fw-bold text-dark mb-5">Our Objectives</h2>
+          <div class="row g-4 text-start">
+            <div class="col-md-6">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
+                  <i class="fas fa-seedling text-success fs-2"></i>
+                </div>
+                <div>
+                  <h4 class="h3 text-dark mb-3">Afforestation & Conservation</h4>
+                  <p class="text-muted mb-0 fs-5">Promotion of afforestation, re-afforestation & environmental conservation targeting the younger generation</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
+                  <i class="fas fa-tractor text-success fs-2"></i>
+                </div>
+                <div>
+                  <h4 class="h3 text-dark mb-3">Modern Agriculture</h4>
+                  <p class="text-muted mb-0 fs-5">Promotion of agriculture in relation to modern technology and preservation of native foods</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 {% endblock content %}
 
-{% block body %}
-<section class="pb-5">
-  <div class="container">
-    <h2 class="mb-5 text-center text-success">Our Core Objectives</h2>
 
-    <!-- Objective 1 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/variety_seedlings.png' %}" class="img-fluid rounded shadow" alt="Variety of seedlings">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">🌱 Increasing the Variety of Seedlings Available</h4>
-          <p>
-            We offer a wide range of seedling varieties including hybrids bred for pest and disease resistance, drought tolerance, and high yield potential.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Objective 2 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center flex-md-row-reverse">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/distribution.png' %}" class="img-fluid rounded shadow" alt="Efficient distribution">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">🚚 Developing Efficient Distribution Channels</h4>
-          <p>
-            We’ve established a reliable network of local distributors to ensure timely and affordable delivery of seedlings to farmers.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Objective 3 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/training.png' %}" class="img-fluid rounded shadow" alt="Farmer training">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">📘 Providing Training and Information</h4>
-          <p>
-            Farmers receive comprehensive training on seedling selection, planting techniques, pest control, and disease management to boost productivity.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Objective 4 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center flex-md-row-reverse">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/availability.png' %}" class="img-fluid rounded shadow" alt="Availability">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">📅 Ensuring Availability Throughout the Planting Season</h4>
-          <p>
-            We guarantee continuous access to seedlings across the entire planting season to help farmers maximize yield.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Objective 5 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/eco_practices.png' %}" class="img-fluid rounded shadow" alt="Eco practices">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">♻️ Encouraging Environmentally Sustainable Practices</h4>
-          <p>
-            We advocate for eco-friendly agriculture through the use of organic fertilizers and natural pest management methods.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Objective 6 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center flex-md-row-reverse">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/nursery_capacity.png' %}" class="img-fluid rounded shadow" alt="Nursery support">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">🏡 Building Capacity of Small-Scale Nurseries</h4>
-          <p>
-            We support local nurseries with tools, training, and funding to enhance the quality and scale of their seedling production.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Objective 7 -->
-    <div class="card bg-dark text-light mb-5 shadow-lg border-success rounded-4 p-4">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="{% static 'assets/img/reforestation.png' %}" class="img-fluid rounded shadow" alt="Reforestation">
-        </div>
-        <div class="col-md-6">
-          <h4 class="text-success">🌳 Promoting Reforestation and Soil Conservation</h4>
-          <p>
-            We promote seedlings for reforestation and soil protection to fight deforestation and improve long-term agricultural sustainability.
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
-{% endblock body %}

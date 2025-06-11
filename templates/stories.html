@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Tree Planting{% endblock %}
+{% block content %}
+<div class="container">
+    {% if stories %}
+        {% for story in stories %}
+            <div class="testimonial">
+                <div class="profile">
+                    <img src="{{ story.image.url }}" alt="Profile Picture">
+                </div>
+                <div class="content">
+                    <h2>{{ story.name }}</h2>
+                    <div class="badge">{{ story.category }}</div>
+                    <p>{{ story.content }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div class="no-testimonials">
+            <p>No testimonials available at the moment. Please check back later!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

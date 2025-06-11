@@ -1,0 +1,94 @@
+ 
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Home - Tree Planting{% endblock %}
+ 
+ {% block content %}
+<div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">Our Work</span>
+          <h2 class="display-4 fw-bold text-dark mb-4">Our Activities</h2>
+          <p class="text-muted mx-auto fs-5" style="max-width: 800px;">We engage in various activities to promote environmental conservation and sustainable agriculture across Kenya.</p>
+        </div>
+      </div>
+      
+      <div class="row g-4 mt-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-spa text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Nursery Management</h4>
+            <p class="text-muted mb-0 fs-5">Tree nursery management and training programs for local communities</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-bullhorn text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Environmental Awareness</h4>
+            <p class="text-muted mb-0 fs-5">Creating awareness on forestry and agriculture matters through campaigns</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-tree text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Tree Planting</h4>
+            <p class="text-muted mb-0 fs-5">Donating and supporting tree planting on public lands and protected areas</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-graduation-cap text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">School Programs</h4>
+            <p class="text-muted mb-0 fs-5">Alumni afforestation programs in schools to engage young generations</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-handshake text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Community Clean-ups</h4>
+            <p class="text-muted mb-0 fs-5">Collaboration with learning institutions for community clean-up initiatives</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-users text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Community Engagement</h4>
+            <p class="text-muted mb-0 fs-5">Empowering local communities through participatory conservation programs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="container py-5">
+  <h1 class="text-success text-center mb-4">Our Partners</h1>
+  <p class="lead text-light text-center">We proudly collaborate with these organizations and individuals who make our work possible.</p>
+  
+  <div class="row mt-4">
+    <!-- Example partner card -->
+    <div class="col-md-4 mb-4">
+      <div class="card border-success bg-dark text-light shadow-sm">
+        <div class="card-body text-center">
+          <img src="{% static 'assets/img/partner1_logo.png' %}" class="img-fluid mb-3" alt="Partner 1 Logo">
+          <h5 class="card-title text-success">Partner Name</h5>
+          <p class="card-text">A brief description about the partner’s contribution.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repeat the card for more partners -->
+  </div>
+</div>
+        {% endblock %}

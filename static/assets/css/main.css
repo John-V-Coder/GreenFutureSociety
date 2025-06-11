@@ -872,112 +872,111 @@
     box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25);
   }
   
- /* ==== Left Sidebar Navigation ==== */
-/* ======= Navmenu Styles ======= */
-/* ======= Navmenu Styles ======= */
+/* === Top Horizontal Navbar === */
+/* Modern Transparent Navbar */
 .navmenu {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 240px;
-  background-color: var(--color-white);
-  border-right: 1px solid var(--color-gray-200);
+  width: 100%;
+  height: 70px;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px); /* Adds a modern glassmorphism effect */
   display: flex;
-  flex-direction: column;
-  padding: 6rem 1rem 2rem; /* Leaves space for fixed header */
-  z-index: 999;
-  box-shadow: var(--shadow-md);
-  transition: left 0.3s ease;
-  justify-content: flex-start; /* Ensures menu items are stacked from the top */
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 1000;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Hover effect to white */
+.navmenu:hover {
+  background-color: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
+/* Logo styling */
+.navmenu .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  margin-right: 2rem;
+}
 
-/* Navmenu links styling */
+.logo-img {
+  height: 40px;
+  width: auto;
+}
+
+.GFS {
+  font-weight: bold;
+  font-size: 1rem;
+  color: var(--color-white); /* White text on transparent */
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.navmenu:hover .GFS {
+  color: var(--color-primary); /* Brand color on white background */
+}
+
+/* Menu items */
 .navmenu ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-sm);
 }
 
-.navmenu li {
-  width: 100%;
-}
-
-.navmenu a {
-  display: block;
-  width: 100%;
-  padding: 0.75rem 1rem;
+/* Nav links */
+.navmenu a.nav-link {
+  padding: 0.5rem 1rem;
   font-weight: 500;
   font-size: 1rem;
-  color: var(--color-gray-800);
+  color: var(--color-white);
   text-decoration: none;
   border-radius: var(--border-radius-sm);
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-.navmenu a:hover,
-.navmenu .active,
-.navmenu li:hover > a {
+.navmenu:hover a.nav-link {
+  color: var(--color-gray-800);
+}
+
+.navmenu a.nav-link:hover,
+.navmenu a.active {
   background-color: var(--color-primary);
   color: var(--color-white);
 }
 
-/* Make the logo and text center aligned */
-.logo {
-  display: flex;
-  flex-direction: column; /* Stacks the image and text vertically */
-  align-items: center; /* Centers the content horizontally */
-  justify-content: center; /* Centers the content vertically */
-  text-align: center;
-  margin-bottom: 2rem; /* Optional, to add some spacing between logo and menu items */
+/* Cart button */
+.nav-cart button {
+  font-weight: 500;
+  font-size: 1rem;
+  color: var(--color-white);
+  background-color: var(--color-success);
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
-.logo-img {
-  height: 40px; /* Adjust logo size */
-  width: auto;  /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Space between image and text */
+.nav-cart button:hover {
+  background-color: darkgreen;
 }
 
-.GFS {
-  font-weight: bold;
-  font-size: 1.25rem;
-  color: var(--color-primary); /* Adjust according to your theme */
-}
-
-
-/* ======= Main Content Layout Adjustment ======= */
-.main-content {
-  margin-left: 240px;
-  padding: 2rem;
-  transition: margin-left 0.3s ease;
-}
-
-/* ======= Responsive Navmenu Toggle ======= */
-@media (max-width: 768px) {
-  .navmenu {
-    left: -240px;
-  }
-
-  .navmenu.mobile-nav-active {
-    left: 0;
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
-}
-
-/* ======= Mobile Nav Toggle Button ======= */
+/* Mobile nav toggle */
 .mobile-nav-toggle {
   position: fixed;
   top: 1rem;
-  left: 1rem;
-  z-index: 1000;
+  right: 1rem;
+  z-index: 1001;
   background: var(--color-primary);
   color: white;
   font-size: 1.5rem;
@@ -988,307 +987,206 @@
   display: none;
 }
 
+/* Responsive menu */
 @media (max-width: 768px) {
   .mobile-nav-toggle {
     display: block;
   }
-}
-/* ======= Hero Section Styles ======= */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
+
+  .navmenu ul {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.95);
+    border-top: 1px solid var(--color-gray-200);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
-  to {
+
+  .navmenu.mobile-nav-active ul {
+    display: flex;
+  }
+
+  .navmenu ul a.nav-link {
+    color: var(--color-gray-800);
+  }
+}
+
+/* Push down main content */
+.main-content {
+  margin-top: 70px;
+  padding: 2rem;
+}
+
+main.main {
+  padding-top: 80px; /* adjust based on your header height */
+}
+
+
+/* Core hero section */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0b3d0b; /* fallback color */
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Hero image */
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  opacity: 0.7;
+  pointer-events: none;
+  transition: transform 0.6s ease;
+}
+
+.hero:hover .hero-image {
+  transform: scale(1.02);
+}
+
+/* Overlay with blur + gradient (glassmorphism style) */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(0, 64, 0, 0.6));
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+/* Text content */
+.hero-text {
+  position: relative;
+  z-index: 3;
+  color: #fff;
+  text-align: center;
+  padding: 2rem;
+  animation: fadeInUp 1.2s ease-out forwards;
+  max-width: 900px;
+  margin: auto;
+}
+
+.hero-text h1 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-text p {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 2rem;
+}
+
+/* Join Us button and dropdown */
+.hero-auth-nav {
+  margin-top: 1rem;
+}
+
+.hero-auth-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-auth-nav .join-us-link {
+  background-color: #28a745;
+  padding: 0.75rem 1.5rem;
+  color: #fff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.hero-auth-nav .join-us-link:hover {
+  background-color: #218838;
+}
+
+.hero-auth-nav .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.hero-auth-nav .dropdown-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.hero-auth-nav .dropdown-menu {
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 0.75rem 1rem;
+  display: none;
+  z-index: 5;
+  min-width: 150px;
+}
+
+.hero-auth-nav .dropdown-menu li {
+  margin: 0.5rem 0;
+}
+
+.hero-auth-nav .dropdown-menu li a {
+  color: #fff;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.hero-auth-nav .dropdown-menu li a:hover {
+  color: #90ee90;
+}
+
+/* Show dropdown on hover */
+.hero-auth-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-.hero {
-  width: 100%;
-  height: 85vh; /* Adjust initial height as needed */
-  min-height: 500px; /* Ensure a minimum visible area */
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  margin-bottom: 20px; /* Add some spacing below the hero */
-}
-
-.hero-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Maintain aspect ratio and cover the container */
-  opacity: 0.7; /* Slightly reduce video opacity for better text contrast */
-  z-index: 1;
-  transition: opacity 0.3s ease-in-out; /* Smooth opacity transition */
-}
-
-.hero-video:hover {
-  opacity: 0.8; /* Subtle visual feedback on hover (optional) */
-}
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 0, 0, 0.6) 0%,
-    rgba(0, 0, 0, 0.4) 60%,
-    transparent 100%
-  ); /* Soft gradient overlay */
-  z-index: 2;
-}
-
-.hero .container {
-  position: relative;
-  z-index: 3; /* Ensure text is above video and overlay */
-  color: #fff;
-  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* Improve text readability */
-  animation: fadeInUp 1.2s ease-out forwards; /* Slightly faster animation */
-  max-width: 800px; /* Allow a bit more width for text */
-  padding: 30px;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.05em; /* Improve heading aesthetics */
-}
-
-.hero p {
-  font-size: 1.5rem;
-  line-height: 1.6; /* Improve paragraph readability */
-  margin-bottom: 2rem;
-  font-weight: 300; /* Lighter font weight for paragraph */
-  opacity: 0.9; /* Slightly reduce opacity for a softer look */
-}
-
-.hero .button-group {
-  display: flex;
-  gap: 1rem;
-  justify-content: center; /* Center buttons */
-}
-
-.hero a.btn {
-  display: inline-block;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 500;
-  text-decoration: none;
-  border-radius: 30px;
-  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
-}
-
-.hero a.btn-primary {
-  background-color: var(--color-primary, #28a745); /* Use your primary color variable */
-  color: #fff;
-  border: 2px solid var(--color-primary, #28a745);
-}
-
-.hero a.btn-primary:hover {
-  background-color: darken(var(--color-primary, #28a745), 10%);
-  transform: translateY(-2px);
-}
-
-.hero a.btn-secondary {
-  background-color: transparent;
-  color: #fff;
-  border: 2px solid #fff;
-}
-
-.hero a.btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
-/* ======= Responsive Hero Section ======= */
-@media (max-width: 1200px) {
-  .hero {
-    height: 75vh;
-  }
-  .hero h1 {
-    font-size: 3rem;
-  }
-  .hero p {
-    font-size: 1.3rem;
-  }
-}
-
-@media (max-width: 992px) {
-  .hero {
-    height: 65vh;
-    min-height: 450px;
-  }
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-  .hero p {
-    font-size: 1.15rem;
-  }
-  .hero .button-group {
-    flex-direction: column; /* Stack buttons on smaller screens */
-    align-items: center;
-  }
-  .hero a.btn {
-    width: 80%; /* Make buttons wider on smaller screens */
-    text-align: center;
-  }
-}
-
+/* Responsive styles */
 @media (max-width: 768px) {
-  .hero {
-    height: 80vh;
-  }
-  .hero h1 {
-    font-size: 2.2rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-}
-
-@media (max-width: 576px) {
-  .hero {
-    height: auto; /* Allow height to adjust based on content */
-    padding: 50px 20px;
-    text-align: center;
-  }
-  .hero-video {
-    opacity: 0.5; /* Further reduce opacity on very small screens */
-  }
-  .hero h1 {
+  .hero-text h1 {
     font-size: 2rem;
   }
-  .hero p {
-    font-size: 0.9rem;
-  }
-  .hero .button-group {
-    width: 100%;
-  }
-  .hero a.btn {
-    width: 100%;
-    padding: 0.8rem 1.5rem;
-    font-size: 0.9rem;
-  }
-}
 
-/* Container for the progress tracker */
-.progress-tracker {
-  display: flex;
-  justify-content: space-between;
-  margin: 2rem 0;
-  padding: 0 1rem;
-  background-color: #fff;
-  border-radius: 30px;
-  border: 1px solid #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: linear-gradient(135deg, #f0f0f0 50%, #f8f8f8 50%);
-}
-
-.step {
-  position: relative;
-  width: 25%;
-  text-align: center;
-  padding: 1rem;
-  color: #6c757d;
-  transition: all 0.3s ease;
-}
-
-.step .step-number {
-  background-color: #ddd;
-  color: white;
-  border-radius: 50%;
-  padding: 0.75rem;
-  width: 3rem;
-  height: 3rem;
-  display: inline-block;
-  line-height: 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  transition: background-color 0.3s ease;
-}
-
-.step .step-title {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-/* Active step styling */
-.step.active .step-number {
-  background-color: #28a745;
-}
-
-.step.completed .step-number {
-  background-color: #6c757d;
-  text-decoration: line-through;
-}
-
-/* Line connecting steps */
-.progress-tracker::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 5px;
-  background-color: #28a745;
-  z-index: -1;
-  border-radius: 50px;
-  transition: all 0.3s ease;
-}
-
-.step:not(:last-child)::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: -20px;
-  width: 20px;
-  height: 2px;
-  background-color: #28a745;
-  transition: background-color 0.3s ease;
-}
-
-.step.completed::after {
-  background-color: #28a745;
-}
-
-/* Responsiveness for smaller screens */
-@media (max-width: 768px) {
-  .progress-tracker {
-    flex-direction: column;
-    padding: 1rem;
-    align-items: center;
-  }
-
-  .step {
-    width: 100%;
-    margin-bottom: 1rem;
-  }
-
-  .progress-tracker::before {
-    display: none; /* Hide connecting line on mobile */
-  }
-}
-
-@media (max-width: 480px) {
-  .step .step-number {
-    width: 2.5rem;
-    height: 2.5rem;
+  .hero-text p {
     font-size: 1rem;
   }
 
-  .step .step-title {
-    font-size: 0.85rem;
+  .hero-auth-nav .join-us-link {
+    padding: 0.5rem 1.2rem;
   }
 }
+
 
 
   /* ======= Footer ======= */

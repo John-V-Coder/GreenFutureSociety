@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Our Partners{% endblock title %}
+
+{% block content %}
+<div class="container py-5">
+  <h1 class="text-success text-center mb-4">Our Partners</h1>
+  <p class="lead text-light text-center">We proudly collaborate with these organizations and individuals who make our work possible.</p>
+  
+  <div class="row mt-4">
+    <!-- Example partner card -->
+    <div class="col-md-4 mb-4">
+      <div class="card border-success bg-dark text-light shadow-sm">
+        <div class="card-body text-center">
+          <img src="{% static 'assets/img/partner1_logo.png' %}" class="img-fluid mb-3" alt="Partner 1 Logo">
+          <h5 class="card-title text-success">Partner Name</h5>
+          <p class="card-text">A brief description about the partner’s contribution.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repeat the card for more partners -->
+  </div>
+</div>
+{% endblock content %}

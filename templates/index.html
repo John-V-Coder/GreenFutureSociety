@@ -1,195 +1,359 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home - Tree Planting{% endblock %}
+{% block title %}Home - Green Future Society{% endblock %}
+
+{% block hero %}
+<section id="hero" class="hero d-flex align-items-center position-relative overflow-hidden vh-100 min-vh-100 w-100">
+  <div class="hero-background position-absolute w-100 h-100">
+    <img
+      src="{% static 'assets/img/hero-image.png' %}"
+      alt="Green Future Society Hero Image"
+      class="w-100 h-100"
+      style="object-fit: cover; object-position: center;"
+    />
+    <div class="hero-gradient position-absolute w-100 h-100" style="background: linear-gradient(135deg, rgba(0, 128, 0, 0.7) 0%, rgba(34, 139, 34, 0.5) 100%);"></div>
+  </div>
+  
+  <div class="position-relative z-index-1 w-100 py-5 my-5">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+          <h1 class="display-3 fw-bold text-white mb-4 animate__animated animate__fadeInDown">Welcome to Green Future Society</h1>
+          <p class="lead text-white mb-5 animate__animated animate__fadeIn animate__delay-1s">Supporting Kenya's forest cover and sustainable agriculture since 2016</p>
+          
+          <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeIn animate__delay-1s">
+            <div class="dropdown">
+              <a href="/auth/login" class="btn btn-light btn-lg px-4 py-2 rounded-pill shadow-sm me-2">
+                <i class="fas fa-user-plus me-2"></i>Join Us
+              </a>
+              <button class="btn btn-light btn-lg px-3 py-2 rounded-pill shadow-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                <span class="visually-hidden">Toggle Dropdown</span>
+              </button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="/auth/signup"><i class="fas fa-user-plus me-2"></i>Sign up</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="/auth/login"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="hero-shape position-absolute bottom-0 start-0 w-100 overflow-hidden">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="fill: #ffffff;">
+      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+    </svg>
+  </div>
+</section>
+{% endblock hero %}
 
 {% block content %}
-<div class="container py-4 mt-4">
-  <div class="card bg-white text-dark border-success shadow-lg rounded-4 p-4">
-    <div class="text-center mb-4">
-      <h1 class="display-5 fw-bold text-success">Let's Plant Trees 🌱</h1>
-      <p class="lead">Join our mission to make the world greener, one tree at a time.</p>
-      <div class="progress-tracker">
-        <div class="step" id="step1">
-          <span class="step-number">1</span>
-          <span class="step-title">Choose Tree</span>
+<!-- Full-width overlapping photo section -->
+<section class="w-100 position-relative" style="margin-top: -50px; z-index: 10;">
+  <div class="container-fluid px-0">
+    <div class="row g-0 justify-content-center">
+      <div class="col-12">
+        <div class="card shadow-lg border-0 rounded-bottom-4 overflow-hidden">
+          <img src="{% static 'assets/img/home_pic.jpg' %}" alt="Green Future Society Activities" class="img-fluid w-100" style="height: 500px; object-fit: cover;">
         </div>
-        <div class="step" id="step2">
-          <span class="step-number">2</span>
-          <span class="step-title">Add to Cart</span>
-        </div>
-      </div> <!-- Added missing closing div -->
+      </div>
     </div>
+  </div>
+</section>
 
-    <div class="section-title text-center my-5">
-      <h2 class="fw-bold text-success">TREES AVAILABLE</h2>
-      <p class="text-muted">Choose from our wide variety of trees</p>
-    </div>
-    
-    {% for product, range, nSlides in allProds %}
-      <div class="mb-5">
-        <h3 class="text-center py-3 bg-success bg-opacity-10 text-success rounded-3">
-          {{ product.0.category }} Trees
-        </h3>
-    
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
-          {% for i in product %}
-            <div class="col">
-              <div class="card bg-light border border-success shadow h-100 text-dark position-relative">
-    
-                <!-- Product Image -->
-                {% if i.image %}
-                  <img src="/media/{{ i.image }}" class="card-img-top p-3" alt="{{ i.product_name }}" height="150px" width="150px" style="height: 200px; object-fit: contain;" id="img{{ i.id }}"/>
-                {% endif %}
-    
-                <!-- Badge -->
-                {% if i.tag == "new" %}
-                  <span class="badge bg-success position-absolute top-0 start-0 m-2">New</span>
-                {% elif i.tag == "popular" %}
-                  <span class="badge bg-warning text-dark position-absolute top-0 start-0 m-2">Popular</span>
-                {% endif %}
-    
-                <!-- Card Body -->
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title text-success" id="namepr{{ i.id }}">{{ i.product_name }}</h5>
-    
-                  {% if i.price %}
-                    <span id="pricepr{{ i.id }}" style="display:none;">{{ i.price }}</span>
-                  {% endif %}
-    
-                  <p class="card-text text-muted">{{ i.desc|slice:"0:50" }}...</p>
-    
-                  <div id="divpr{{ i.id }}" class="divpr mt-auto">
-                    <button id="pr{{ i.id }}" class="btn btn-success w-100 cart">Plant This</button>
-                  </div>
-    
-                  <a href="{{ i.image.url }}" class="btn btn-outline-success w-100 mt-2" target="_blank">View Details</a>
+<!-- Main content sections -->
+<main class="w-100">
+  <!-- About Section -->
+  <section class="py-6 bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">Our Mission</span>
+          <h2 class="display-4 fw-bold text-dark mb-4">Our Green Legacy</h2>
+          <p class="lead text-muted mx-auto" style="max-width: 800px;">
+            At the heart of our initiative is the commitment to empower farmers, restore forests, and promote sustainable agriculture in Kenya.
+            Through seedling supply, nursery support, and community-based reforestation, we're building a greener, more resilient future.
+          </p>
+        </div>
+      </div>
+      
+      <div class="row g-4 mt-5">
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow-lg">
+            <div class="card-body p-5">
+              <div class="d-flex align-items-center mb-4">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
+                  <i class="fas fa-leaf text-success fs-2"></i>
                 </div>
-    
+                <h3 class="card-title mb-0 text-dark fs-3">Our Background</h3>
+              </div>
+              <p class="card-text text-muted fs-5">
+                Green Future Society is a National non-governmental organization formed in October 2015 and 
+                registered in March 2016 under the Registration of Society's Act of 2005. Our headquarters is in 
+                Kisumu, Kenya, covering Western Kenya region.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-5">
+              <a href="#" class="text-success text-decoration-none fw-medium fs-5">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow-lg">
+            <div class="card-body p-5">
+              <div class="d-flex align-items-center mb-4">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
+                  <i class="fas fa-bullseye text-success fs-2"></i>
+                </div>
+                <h3 class="card-title mb-0 text-dark fs-3">Our Goal</h3>
+              </div>
+              <p class="card-text text-muted fs-5">
+                Supporting the Kenyan government in increasing forest cover to mitigate the effects of climate 
+                change and enhance agricultural activities to improve food security across the nation.
+              </p>
+            </div>
+            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-5">
+              <a href="#" class="text-success text-decoration-none fw-medium fs-5">Our targets <i class="fas fa-arrow-right ms-2"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objectives Section -->
+  <section class="py-6 bg-light">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">What We Do</span>
+          <h2 class="display-4 fw-bold text-dark mb-5">Our Objectives</h2>
+          <div class="row g-4 text-start">
+            <div class="col-md-6">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
+                  <i class="fas fa-seedling text-success fs-2"></i>
+                </div>
+                <div>
+                  <h4 class="h3 text-dark mb-3">Afforestation & Conservation</h4>
+                  <p class="text-muted mb-0 fs-5">Promotion of afforestation, re-afforestation & environmental conservation targeting the younger generation</p>
+                </div>
               </div>
             </div>
-          {% endfor %}
+            <div class="col-md-6">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
+                  <i class="fas fa-tractor text-success fs-2"></i>
+                </div>
+                <div>
+                  <h4 class="h3 text-dark mb-3">Modern Agriculture</h4>
+                  <p class="text-muted mb-0 fs-5">Promotion of agriculture in relation to modern technology and preservation of native foods</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    {% endfor %}
-    
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="py-6 bg-white">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 text-center">
+          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">Our Work</span>
+          <h2 class="display-4 fw-bold text-dark mb-4">Our Activities</h2>
+          <p class="text-muted mx-auto fs-5" style="max-width: 800px;">We engage in various activities to promote environmental conservation and sustainable agriculture across Kenya.</p>
+        </div>
+      </div>
+      
+      <div class="row g-4 mt-4">
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-spa text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Nursery Management</h4>
+            <p class="text-muted mb-0 fs-5">Tree nursery management and training programs for local communities</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-bullhorn text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Environmental Awareness</h4>
+            <p class="text-muted mb-0 fs-5">Creating awareness on forestry and agriculture matters through campaigns</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-tree text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Tree Planting</h4>
+            <p class="text-muted mb-0 fs-5">Donating and supporting tree planting on public lands and protected areas</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-graduation-cap text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">School Programs</h4>
+            <p class="text-muted mb-0 fs-5">Alumni afforestation programs in schools to engage young generations</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-handshake text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Community Clean-ups</h4>
+            <p class="text-muted mb-0 fs-5">Collaboration with learning institutions for community clean-up initiatives</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="p-5 bg-white rounded-3 shadow-sm h-100 transition-all hover-shadow-lg">
+            <div class="bg-success bg-opacity-10 p-3 rounded-circle mb-4" style="width: 70px; height: 70px;">
+              <i class="fas fa-users text-success fs-3"></i>
+            </div>
+            <h4 class="h3 text-dark mb-3">Community Engagement</h4>
+            <p class="text-muted mb-0 fs-5">Empowering local communities through participatory conservation programs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Full-width CTA Section -->
+  <section class="py-7 bg-success" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+    <div class="container">
+      <div class="row justify-content-center text-center">
+        <div class="col-lg-8">
+          <h2 class="display-4 fw-bold text-white mb-4">Join Our Green Movement</h2>
+          <p class="lead text-white opacity-75 mb-5">Be part of Kenya's transformation towards a sustainable future</p>
+          <div class="d-flex justify-content-center gap-4">
+            <a href="{% url 'green_legacy' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fs-4">
+              <i class="fas fa-book-open me-2"></i>Learn More
+            </a>
+            <button type="button" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fs-4" data-bs-toggle="modal" data-bs-target="#aboutModal">
+              <i class="fas fa-hands-helping me-2"></i>Get Involved
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- About Modal -->
+<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content overflow-hidden border-0">
+      <div class="modal-header border-0 text-white py-4" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+        <div>
+          <h5 class="modal-title fs-3 fw-bold" id="aboutModalLabel">
+            <i class="fas fa-leaf me-2"></i>Join Our Mission
+          </h5>
+          <p class="mb-0 opacity-75">Be part of something bigger</p>
+        </div>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-5">
+        <div class="row align-items-center mb-5">
+          <div class="col-md-4 text-center mb-4 mb-md-0">
+            <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-block">
+              <i class="fas fa-hands-helping text-success fs-1"></i>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <h3 class="h2 fw-bold text-dark mb-3">Ready to make a difference?</h3>
+            <p class="lead text-muted fs-4">
+              Whether you're a farmer looking for sustainable practices, a student interested in environmental conservation, 
+              or a community member wanting to contribute to reforestation efforts, we welcome you to join our mission.
+            </p>
+          </div>
+        </div>
+        
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-header bg-success bg-opacity-10 border-0 py-4">
+                <h4 class="mb-0 text-success fs-3">
+                  <i class="fas fa-tractor me-2"></i>For Farmers
+                </h4>
+              </div>
+              <div class="card-body py-4">
+                <ul class="list-unstyled">
+                  <li class="mb-3 d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Tree nursery training and support</span>
+                  </li>
+                  <li class="mb-3 d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Sustainable agriculture programs</span>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Modern farming techniques workshops</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-header bg-success bg-opacity-10 border-0 py-4">
+                <h4 class="mb-0 text-success fs-3">
+                  <i class="fas fa-users me-2"></i>For Communities
+                </h4>
+              </div>
+              <div class="card-body py-4">
+                <ul class="list-unstyled">
+                  <li class="mb-3 d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Tree planting and adoption programs</span>
+                  </li>
+                  <li class="mb-3 d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Environmental education initiatives</span>
+                  </li>
+                  <li class="d-flex align-items-center">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Community clean-up campaigns</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer border-0 py-4">
+        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-2 fs-5" data-bs-dismiss="modal">Close</button>
+        <a href="/auth/signup" class="btn btn-success rounded-pill px-4 py-2 fs-5">
+          <i class="fas fa-user-plus me-2"></i>Sign Up Today
+        </a>
+      </div>
+    </div>
   </div>
 </div>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  const username = "{{ request.user.username|escapejs }}";
-  const cartKey = "cart_" + username;
-  let cart = JSON.parse(localStorage.getItem(cartKey)) || {};
-
-  const popcartEl = document.getElementById('popcart');
-  if (popcartEl) {
-    new bootstrap.Popover(popcartEl, {
-      html: true,
-      sanitize: false,
-      content: generatePopoverContent(cart),
-      placement: 'bottom',
-      trigger: 'click'
-    });
-  }
-
-  function updateCart() {
-    let sum = 0;
-    for (let item in cart) {
-      sum += cart[item][0];
-      const div = document.getElementById('divpr' + item);
-      if (div) {
-        div.innerHTML = `
-          <div class="btn-group w-100">
-            <button id="${item}" class="btn btn-sm btn-danger minus">-</button>
-            <span class="btn btn-sm disabled">${cart[item][0]}</span>
-            <button id="plus${item}" class="btn btn-sm btn-success plus">+</button>
-          </div>`;
-      }
-    }
-    const count = document.getElementById('cartcount');
-    if (count) count.textContent = sum;
-    localStorage.setItem(cartKey, JSON.stringify(cart));
-
-    if (popcartEl && bootstrap.Popover.getInstance(popcartEl)) {
-      bootstrap.Popover.getInstance(popcartEl).setContent({
-        '.popover-body': generatePopoverContent(cart)
-      });
-    }
-  }
-
-  document.addEventListener('click', function (e) {
-    if (e.target.classList.contains('cart')) {
-      const id = e.target.id.slice(2);
-      const name = document.getElementById('namepr' + id)?.textContent || "Unknown Tree";
-      const price = parseFloat(document.getElementById('pricepr' + id)?.textContent || 0);
-      const image = document.getElementById('img' + id)?.src || "";
-
-      cart[id] = cart[id] ? [cart[id][0] + 1, name, price, image] : [1, name, price, image];
-      updateCart();
-    }
-
-    if (e.target.classList.contains('minus')) {
-      const id = e.target.id;
-      if (cart[id][0] <= 1) {
-        delete cart[id];
-        document.getElementById('divpr' + id).innerHTML = `<button id="pr${id}" class="btn btn-success w-100 cart">Plant This</button>`;
-      } else {
-        cart[id][0] -= 1;
-      }
-      updateCart();
-    }
-
-    if (e.target.classList.contains('plus')) {
-      const id = e.target.id.replace('plus', '');
-      cart[id][0] += 1;
-      updateCart();
-    }
-  });
-
-  function generatePopoverContent(cart) {
-    if (Object.keys(cart).length === 0) {
-      return '<div class="p-2">Your cart is empty</div>';
-    }
-
-    let html = '<div class="p-2"><h6 class="fw-bold">Your Cart</h6><ul class="list-unstyled mb-2">';
-    let total = 0;
-
-    for (const [id, [qty, name, price]] of Object.entries(cart)) {
-      html += `<li>${name} × ${qty} — KES ${(price * qty).toFixed(2)}</li>`;
-      total += price * qty;
-    }
-
-    html += `</ul>
-      <hr>
-      <div class="d-flex justify-content-between align-items-center mb-2">
-        <strong>Total: KES ${total.toFixed(2)}</strong>
-      </div>
-      <div class="d-grid gap-2">
-        <a href="/checkout" class="btn btn-success btn-sm">Checkout</a>
-        <button onclick="window.clearCart()" class="btn btn-danger btn-sm">Clear Cart</button>
-      </div>
-    </div>`;
-
-    return html;
-  }
-
-  window.clearCart = function () {
-    cart = {};
-    localStorage.removeItem(cartKey);
-    updateCart();
-    document.querySelectorAll('.divpr').forEach(div => {
-      const id = div.id.replace('divpr', '');
-      div.innerHTML = `<button id="pr${id}" class="btn btn-success w-100 cart">Plant This</button>`;
-    });
-    if (popcartEl && bootstrap.Popover.getInstance(popcartEl)) {
-      bootstrap.Popover.getInstance(popcartEl).hide();
-    }
-  };
-
-  updateCart();
-});
-</script>
 {% endblock %}
