@@ -4,121 +4,263 @@
 {% block title %}Home - Green Future Society{% endblock %}
 
 {% block hero %}
-<section id="hero" class="hero d-flex align-items-center position-relative overflow-hidden vh-100 min-vh-100 w-100">
-  <div class="hero-background position-absolute w-100 h-100">
+<section class="hero-container">
+  <!-- Background Image -->
+  <div class="hero-background">
     <img
       src="{% static 'assets/img/hero-image.png' %}"
-      alt="Green Future Society Hero Image"
-      class="w-100 h-100"
-      style="object-fit: cover; object-position: center;"
+      alt="Green Future Society promoting sustainable agriculture and forestry in Kenya"
+      class="hero-image"
     />
-    <div class="hero-gradient position-absolute w-100 h-100" style="background: linear-gradient(135deg, rgba(0, 128, 0, 0.7) 0%, rgba(34, 139, 34, 0.5) 100%);"></div>
+    <div class="hero-overlay"></div>
   </div>
-  
-  <div class="position-relative z-index-1 w-100 py-5 my-5">
+
+  <!-- Floating Particles -->
+  <div class="floating-particles">
+    <!-- You can dynamically add particles using JS if needed -->
+    {% for _ in particle_range %}
+    <div class="particle"></div>
+    {% endfor %}
+  </div>
+
+  <!-- Main Content -->
+  <div class="hero-content">
     <div class="container">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-8">
-          <h1 class="display-3 fw-bold text-white mb-4 animate__animated animate__fadeInDown">Welcome to Green Future Society</h1>
-          <p class="lead text-white mb-5 animate__animated animate__fadeIn animate__delay-1s">Supporting Kenya's forest cover and sustainable agriculture since 2016</p>
-          
-          <div class="d-flex justify-content-center gap-3 animate__animated animate__fadeIn animate__delay-1s">
-            <div class="dropdown">
-              <a href="/auth/login" class="btn btn-light btn-lg px-4 py-2 rounded-pill shadow-sm me-2">
-                <i class="fas fa-user-plus me-2"></i>Join Us
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="hero-text">
+            <h1 class="hero-title animate-fade-up">..</h1>
+            <h1 class="hero-title animate-fade-up">Green Future Society</h1>
+            <p class="hero-subtitle animate-fade-up-delay-1">
+              Transforming Kenya's landscape through sustainable forestry and regenerative agriculture. 
+              Join us in building a greener tomorrow, one tree at a time.
+            </p>
+
+            <div class="cta-container animate-fade-up-delay-2">
+              <a href="/service" class="btn-secondary-custom" aria-label="Discover More about Our Services">
+                <i class="fas fa-play-circle"></i> Discover More
               </a>
-              <button class="btn btn-light btn-lg px-3 py-2 rounded-pill shadow-sm dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
-                <span class="visually-hidden">Toggle Dropdown</span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-end">
-                <li><a class="dropdown-item" href="/auth/signup"><i class="fas fa-user-plus me-2"></i>Sign up</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="/auth/login"><i class="fas fa-sign-in-alt me-2"></i>Login</a></li>
-              </ul>
+              <a href="/green-campaign" class="btn-primary-custom" aria-label="Start Your Green Journey">
+                <i class="fas fa-leaf"></i> Start Your Journey
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  <div class="hero-shape position-absolute bottom-0 start-0 w-100 overflow-hidden">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" style="fill: #ffffff;">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-    </svg>
+
+  <!-- Statistics -->
+  <div class="wrapper">
+    <div class="stats-container animate-fade-up-delay-3">
+      <div class="stat-item glass-card">
+        <span class="stat-number">8+</span>
+        <span class="stat-label">Years Impact</span>
+      </div>
+      <div class="stat-item glass-card">
+        <span class="stat-number">50K+</span>
+        <span class="stat-label">Trees Planted</span>
+      </div>
+      <div class="stat-item glass-card">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Farmers Supported</span>
+      </div>
+    </div>
   </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div style="font-size: 0.9rem; margin-bottom: 0.5rem;">Green Impact</div>
+    <div class="scroll-arrow">
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </div>
+
+  <!-- Decorative Shapes -->
+  <div class="hero-shapes">
+    <div class="shape-wave"></div>
+  </div>
+
+  <!-- Quick Login Modal 
+  <div class="modal fade" id="quickLoginModal" tabindex="-1" aria-labelledby="quickLoginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content glass-card" style="border: none; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px);">
+        <div class="modal-header border-0">
+          <h5 class="modal-title" id="quickLoginModalLabel">Join Green Future Society</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p class="mb-4">Ready to make a difference? Choose how you'd like to get started.</p>
+          <div class="d-grid gap-2">
+            <a href="/auth/signup" class="btn btn-success btn-lg" aria-label="Create New Account">
+              <i class="fas fa-user-plus me-2"></i>Create New Account
+            </a>
+            <a href="/auth/login" class="btn btn-outline-success btn-lg" aria-label="Login to Your Account">
+              <i class="fas fa-sign-in-alt me-2"></i>I Already Have Account
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
 </section>
+
 {% endblock hero %}
 
 {% block content %}
-<!-- Full-width overlapping photo section -->
-<section class="w-100 position-relative" style="margin-top: -50px; z-index: 10;">
-  <div class="container-fluid px-0">
-    <div class="row g-0 justify-content-center">
-      <div class="col-12">
-        <div class="card shadow-lg border-0 rounded-bottom-4 overflow-hidden">
-          <img src="{% static 'assets/img/home_pic.jpg' %}" alt="Green Future Society Activities" class="img-fluid w-100" style="height: 500px; object-fit: cover;">
+<div class="container-fluid px-0">
+  <div class="row g-0 min-vh-100">
+    <!-- Hero Image Column (Left) -->
+    <div class="col-lg-6 d-flex align-items-stretch position-relative">
+      <div class="parallax-wrapper w-100 h-100">
+        <img src="{% static 'assets/img/home_pic.jpg' %}" 
+             alt="Green Future Society team planting trees in Kenya" 
+             class="hero-image img-fluid h-100 w-100 object-fit-cover"
+             loading="eager"
+             width="1920"
+             height="1080">
+        <div class="hero-overlay d-flex align-items-center p-5">
+          <div class="text-white">
+            <h1 class="display-3 fw-bold mb-4 animate__animated animate__fadeInDown">Growing Kenya's Green Future</h1>
+            <p class="lead fs-2 mb-5 animate__animated animate__fadeIn animate__delay-1s">Empowering communities through sustainable agriculture and reforestation</p>
+            <a href="/farming-academy" class="btn btn-success btn-lg px-5 py-3 rounded-pill fs-4 animate__animated animate__fadeInUp animate__delay-1s">
+              <i class="fas fa-seedling me-2"></i>Explore Our Impact
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- About Section Column (Right) -->
+    <div class="col-lg-6 d-flex align-items-center bg-white py-6 py-lg-0">
+      <div class="container py-5">
+        <div class="px-lg-5">
+          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Our Mission</span>
+          <h2 class="display-4 fw-bold text-dark mb-4">Cultivating <span class="text-success">Sustainable</span> Change</h2>
+          <p class="lead text-muted mb-5">
+            At Green Future Society, we're transforming Kenya's landscape through innovative agroforestry, community empowerment, 
+            and climate-smart solutions that benefit both people and planet.
+          </p>
+
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden transition-all hover-lift">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-history text-success fs-2"></i>
+                    </div>
+                    <h3 class="card-title mb-0 text-dark fs-4">Our Journey</h3>
+                  </div>
+                  <p class="card-text text-muted">
+                    Founded in 2015, we've grown from a local initiative to a national force for environmental change across Western Kenya.
+                  </p>
+                  <div class="mt-3 pt-3 border-top">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-calendar-check text-success me-3 fs-5"></i>
+                      <div>
+                        <p class="mb-0 small fw-medium">Years of Impact</p>
+                        <h4 class="mb-0 text-success">8+</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-4">
+                  <a href="/service" class="btn btn-link text-success text-decoration-none fw-medium p-0">
+                    Our story <i class="fas fa-arrow-right ms-2 align-middle"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden transition-all hover-lift">
+                <div class="card-body p-4">
+                  <div class="d-flex align-items-center mb-3">
+                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3 flex-shrink-0">
+                      <i class="fas fa-bullseye text-success fs-2"></i>
+                    </div>
+                    <h3 class="card-title mb-0 text-dark fs-4">Our Vision</h3>
+                  </div>
+                  <p class="card-text text-muted">
+                    Sustainable agriculture and thriving forests coexisting to create resilient ecosystems for future generations.
+                  </p>
+                  <div class="mt-3 pt-3 border-top">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-tree text-success me-3 fs-5"></i>
+                      <div>
+                        <p class="mb-0 small fw-medium">Forest Target</p>
+                        <h4 class="mb-0 text-success">30% by 2030</h4>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer bg-transparent border-0 pt-0 pb-3 px-4">
+                  <a href="/green-campaign" class="btn btn-link text-success text-decoration-none fw-medium p-0">
+                    Our roadmap <i class="fas fa-arrow-right ms-2 align-middle"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</section>
+</div>
 
-<!-- Main content sections -->
-<main class="w-100">
-  <!-- About Section -->
-  <section class="py-6 bg-white">
+  <!-- Impact Section with Animated Counters -->
+  <section class="py-6 bg-light" aria-labelledby="impact-heading">
     <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10 text-center">
-          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">Our Mission</span>
-          <h2 class="display-4 fw-bold text-dark mb-4">Our Green Legacy</h2>
-          <p class="lead text-muted mx-auto" style="max-width: 800px;">
-            At the heart of our initiative is the commitment to empower farmers, restore forests, and promote sustainable agriculture in Kenya.
-            Through seedling supply, nursery support, and community-based reforestation, we're building a greener, more resilient future.
-          </p>
+      <div class="row justify-content-center text-center mb-6">
+        <div class="col-lg-8">
+          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">By The Numbers</span>
+          <h2 id="impact-heading" class="display-4 fw-bold text-dark mb-4">Growing <span class="text-success">Impact</span></h2>
+          <p class="lead text-muted">Measurable change through community-driven environmental action</p>
         </div>
       </div>
       
-      <div class="row g-4 mt-5">
-        <div class="col-md-6">
-          <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow-lg">
-            <div class="card-body p-5">
-              <div class="d-flex align-items-center mb-4">
-                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
-                  <i class="fas fa-leaf text-success fs-2"></i>
-                </div>
-                <h3 class="card-title mb-0 text-dark fs-3">Our Background</h3>
+      <div class="row g-4">
+        <div class="col-6 col-md-3">
+          <div class="card border-0 bg-white shadow-sm rounded-3 h-100 py-4 px-3 text-center">
+            <div class="card-body">
+              <div class="bg-success bg-opacity-10 p-3 rounded-circle d-inline-flex mb-4">
+                <i class="fas fa-tree text-success fs-2"></i>
               </div>
-              <p class="card-text text-muted fs-5">
-                Green Future Society is a National non-governmental organization formed in October 2015 and 
-                registered in March 2016 under the Registration of Society's Act of 2005. Our headquarters is in 
-                Kisumu, Kenya, covering Western Kenya region.
-              </p>
-            </div>
-            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-5">
-              <a href="/service" class="text-success text-decoration-none fw-medium fs-5">Learn more <i class="fas fa-arrow-right ms-2"></i></a>
+              <h3 class="counter-value display-4 fw-bold text-dark mb-2" data-count="12">0</h3>
+              <p class="text-muted fs-5 mb-0">Million Tree Target</p>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="card h-100 border-0 shadow-sm rounded-3 overflow-hidden transition-all hover-shadow-lg">
-            <div class="card-body p-5">
-              <div class="d-flex align-items-center mb-4">
-                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4">
-                  <i class="fas fa-bullseye text-success fs-2"></i>
-                </div>
-                <h3 class="card-title mb-0 text-dark fs-3">Our Goal</h3>
+        <div class="col-6 col-md-3">
+          <div class="card border-0 bg-white shadow-sm rounded-3 h-100 py-4 px-3 text-center">
+            <div class="card-body">
+              <div class="bg-success bg-opacity-10 p-3 rounded-circle d-inline-flex mb-4">
+                <i class="fas fa-map-marked-alt text-success fs-2"></i>
               </div>
-              <p class="card-text text-muted fs-5">
-                Supporting the Kenyan government in increasing forest cover to mitigate the effects of climate 
-                change and enhance agricultural activities to improve food security across the nation.
-              </p>
+              <h3 class="counter-value display-4 fw-bold text-dark mb-2" data-count="8">0</h3>
+              <p class="text-muted fs-5 mb-0">Counties Covered</p>
             </div>
-            <div class="card-footer bg-transparent border-0 pt-0 pb-4 px-5">
-              <a href="/green-campaign" class="text-success text-decoration-none fw-medium fs-5">Our targets <i class="fas fa-arrow-right ms-2"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card border-0 bg-white shadow-sm rounded-3 h-100 py-4 px-3 text-center">
+            <div class="card-body">
+              <div class="bg-success bg-opacity-10 p-3 rounded-circle d-inline-flex mb-4">
+                <i class="fas fa-graduation-cap text-success fs-2"></i>
+              </div>
+              <h3 class="counter-value display-4 fw-bold text-dark mb-2" data-count="12">0</h3>
+              <p class="text-muted fs-5 mb-0">Million Students Reached</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="card border-0 bg-white shadow-sm rounded-3 h-100 py-4 px-3 text-center">
+            <div class="card-body">
+              <div class="bg-success bg-opacity-10 p-3 rounded-circle d-inline-flex mb-4">
+                <i class="fas fa-hands-helping text-success fs-2"></i>
+              </div>
+              <h3 class="counter-value display-4 fw-bold text-dark mb-2" data-count="150">0</h3>
+              <p class="text-muted fs-5 mb-0">Community Projects</p>
             </div>
           </div>
         </div>
@@ -127,32 +269,67 @@
   </section>
 
   <!-- Objectives Section -->
-  <section class="py-6 bg-light">
+  <section class="py-6 bg-white" aria-labelledby="objectives-heading">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-10 text-center">
-          <span class="badge bg-success bg-opacity-10 text-success fs-6 mb-3">What We Do</span>
-          <h2 class="display-4 fw-bold text-dark mb-5">Our Objectives</h2>
+          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Our Approach</span>
+          <h2 id="objectives-heading" class="display-4 fw-bold text-dark mb-5">Integrated <span class="text-success">Solutions</span></h2>
+          
           <div class="row g-4 text-start">
             <div class="col-md-6">
-              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100 transition-all hover-lift">
                 <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
                   <i class="fas fa-seedling text-success fs-2"></i>
                 </div>
                 <div>
-                  <h4 class="h3 text-dark mb-3">Afforestation & Conservation</h4>
-                  <p class="text-muted mb-0 fs-5">Promotion of afforestation, re-afforestation & environmental conservation targeting the younger generation</p>
+                  <h3 class="h3 text-dark mb-3">Ecological Restoration</h3>
+                  <p class="text-muted mb-0 fs-5">
+                    Comprehensive afforestation programs combining native species with climate-resilient varieties,
+                    supported by community monitoring and maintenance systems.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col-md-6">
-              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100 transition-all hover-lift">
                 <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
                   <i class="fas fa-tractor text-success fs-2"></i>
                 </div>
                 <div>
-                  <h4 class="h3 text-dark mb-3">Modern Agriculture</h4>
-                  <p class="text-muted mb-0 fs-5">Promotion of agriculture in relation to modern technology and preservation of native foods</p>
+                  <h3 class="h3 text-dark mb-3">Smart Agriculture</h3>
+                  <p class="text-muted mb-0 fs-5">
+                    Training farmers in regenerative techniques, agroforestry systems, and water conservation
+                    methods that increase yields while restoring ecosystems.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100 transition-all hover-lift">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
+                  <i class="fas fa-graduation-cap text-success fs-2"></i>
+                </div>
+                <div>
+                  <h3 class="h3 text-dark mb-3">Youth Education</h3>
+                  <p class="text-muted mb-0 fs-5">
+                    School-based environmental clubs, practical conservation curriculum, and youth leadership
+                    programs creating the next generation of eco-champions.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="d-flex align-items-start p-4 bg-white rounded-3 shadow-sm h-100 transition-all hover-lift">
+                <div class="bg-success bg-opacity-10 p-3 rounded-circle me-4 flex-shrink-0">
+                  <i class="fas fa-users text-success fs-2"></i>
+                </div>
+                <div>
+                  <h3 class="h3 text-dark mb-3">Community Empowerment</h3>
+                  <p class="text-muted mb-0 fs-5">
+                    Participatory planning, local capacity building, and sustainable livelihood programs that
+                    make environmental stewardship economically viable.
+                  </p>
                 </div>
               </div>
             </div>
@@ -161,43 +338,141 @@
       </div>
     </div>
   </section>
-<div class="container">
-    <h2 class="section-title">Our Impact</h2>
-    <div class="analytics-section">
-        <div class="analytics-item">
-            <h1>12M</h1>
-            <p>Tree Growing Target</p>
-        </div>
-        <div class="analytics-item">
-            <h1>8</h1>
-            <p>Counties Covered</p>
-        </div>
-        <div class="analytics-item">
-            <h1>12M+</h1>
-            <p>School Children Reach</p>
-        </div>
-        <div class="analytics-item">
-            <h1>5</h1>
-            <p>Community Clean-Ups</p>
-        </div>
-    </div>
-</div>
 
+  <!-- Testimonials Section -->
+  <section class="py-7 bg-light" aria-label="Success Stories">
+    <div class="container">
+      <div class="row justify-content-center text-center mb-6">
+        <div class="col-lg-8">
+          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Voices of Change</span>
+          <h2 class="display-4 fw-bold text-dark mb-4">Community <span class="text-success">Stories</span></h2>
+          <p class="lead text-muted">Hear from those whose lives we've transformed together</p>
+        </div>
+      </div>
+      
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/farmer-testimonial.jpg' %}" 
+                   alt="Farmer in field" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "The agroforestry training transformed my farm. I now grow food crops with fruit trees,
+                earning more while improving the soil."
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/farmer-avatar.jpg' %}" 
+                     alt="John Kamau" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">John Kamau</h5>
+                  <small class="text-muted">Smallholder Farmer, Nandi County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/teacher-testimonial.jpg' %}" 
+                   alt="Teacher with students" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "Our environmental club has become the most popular activity. Students now lead tree planting
+                and recycling initiatives in our community."
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/teacher-avatar.jpg' %}" 
+                     alt="Grace Atieno" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">Grace Atieno</h5>
+                  <small class="text-muted">Teacher, Kisumu County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/woman-testimonial.jpg' %}" 
+                   alt="Community leader" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "The tree nursery project gave our women's group a sustainable income while restoring our
+                local watershed. We're now climate champions!"
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/woman-avatar.jpg' %}" 
+                     alt="Mary Wanjiku" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">Mary Wanjiku</h5>
+                  <small class="text-muted">Community Leader, Nakuru County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Full-width CTA Section -->
-  <section class="py-7 bg-success" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
-    <div class="container">
+  <!-- CTA Section with Gradient Background -->
+  <section class="py-8 bg-success position-relative overflow-hidden" aria-labelledby="cta-heading">
+    <div class="cta-gradient-overlay"></div>
+    <div class="container position-relative">
       <div class="row justify-content-center text-center">
         <div class="col-lg-8">
-          <h2 class="display-4 fw-bold text-white mb-4">Join Our Green Movement</h2>
-          <p class="lead text-white opacity-75 mb-5">Be part of Kenya's transformation towards a sustainable future</p>
-          <div class="d-flex justify-content-center gap-4">
-            <a href="{% url 'green_legacy' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fs-4">
-              <i class="fas fa-book-open me-2"></i>Learn More
+          <span class="badge bg-white bg-opacity-20 text-white fs-6 mb-3 px-4 py-2 rounded-pill">Take Action</span>
+          <h2 id="cta-heading" class="display-3 fw-bold text-white mb-4">Ready to Grow <span class="text-warning">With Us?</span></h2>
+          <p class="lead text-white opacity-75 mb-5 mx-auto" style="max-width: 700px;">
+            Whether you're a farmer, student, business, or concerned citizen, there's a place for you in Kenya's green revolution.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="{% url 'green_legacy' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fs-4 fw-medium">
+              <i class="fas fa-book-open me-2"></i>Learn About Our Programs
             </a>
-            <button type="button" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fs-4" data-bs-toggle="modal" data-bs-target="#aboutModal">
-              <i class="fas fa-hands-helping me-2"></i>Get Involved
+            <button type="button" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fs-4 fw-medium" data-bs-toggle="modal" data-bs-target="#joinModal">
+              <i class="fas fa-hands-helping me-2"></i>Partner With Us
             </button>
           </div>
         </div>
@@ -206,108 +481,162 @@
   </section>
 </main>
 
-<!-- About Modal -->
-<div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content overflow-hidden border-0">
-      <div class="modal-header border-0 text-white py-4" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
-        <div>
-          <h5 class="modal-title fs-3 fw-bold" id="aboutModalLabel">
-            <i class="fas fa-leaf me-2"></i>Join Our Mission
-          </h5>
-          <p class="mb-0 opacity-75">Be part of something bigger</p>
+<!-- Join Modal -->
+<div class="modal fade" id="joinModal" tabindex="-1" aria-labelledby="joinModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
+    <div class="modal-content overflow-hidden border-0 shadow-lg">
+      <div class="modal-header border-0 text-white py-5 position-relative">
+        <div class="modal-header-bg"></div>
+        <div class="position-relative">
+          <h2 class="modal-title fs-2 fw-bold" id="joinModalLabel">
+            <i class="fas fa-hands-helping me-2"></i>Join Our Green Movement
+          </h2>
+          <p class="mb-0 opacity-75">Choose your pathway to make a difference</p>
         </div>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button type="button" class="btn-close btn-close-white position-relative" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body p-5">
-        <div class="row align-items-center mb-5">
-          <div class="col-md-4 text-center mb-4 mb-md-0">
-            <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-block">
-              <i class="fas fa-hands-helping text-success fs-1"></i>
-            </div>
-          </div>
-          <div class="col-md-8">
-            <h3 class="h2 fw-bold text-dark mb-3">Ready to make a difference?</h3>
-            <p class="lead text-muted fs-4">
-              Whether you're a farmer looking for sustainable practices, a student interested in environmental conservation, 
-              or a community member wanting to contribute to reforestation efforts, we welcome you to join our mission.
-            </p>
-          </div>
-        </div>
-        
         <div class="row g-4">
-          <div class="col-md-6">
+          <div class="col-lg-4">
             <div class="card border-0 shadow-sm h-100">
-              <div class="card-header bg-success bg-opacity-10 border-0 py-4">
-                <h4 class="mb-0 text-success fs-3">
-                  <i class="fas fa-tractor me-2"></i>For Farmers
-                </h4>
+              <div class="card-header bg-success bg-opacity-10 border-0 py-4 text-center">
+                <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-flex mb-3">
+                  <i class="fas fa-user-tie text-success fs-1"></i>
+                </div>
+                <h3 class="h3 mb-0 text-dark">For Organizations</h3>
               </div>
               <div class="card-body py-4">
-                <ul class="list-unstyled">
-                  <li class="mb-3 d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
                       <i class="fas fa-check text-success"></i>
                     </div>
-                    <span class="fs-5">Tree nursery training and support</span>
+                    <span class="fs-5">Corporate partnership programs</span>
                   </li>
-                  <li class="mb-3 d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
                       <i class="fas fa-check text-success"></i>
                     </div>
-                    <span class="fs-5">Sustainable agriculture programs</span>
+                    <span class="fs-5">CSR and employee engagement</span>
                   </li>
-                  <li class="d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
                       <i class="fas fa-check text-success"></i>
                     </div>
-                    <span class="fs-5">Modern farming techniques workshops</span>
+                    <span class="fs-5">Sponsorship opportunities</span>
+                  </li>
+                  <li class="d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Bulk tree planting initiatives</span>
                   </li>
                 </ul>
+              </div>
+              <div class="card-footer bg-transparent border-0 py-3 text-center">
+                <a href="/partners" class="btn btn-success rounded-pill px-4">
+                  Explore Partnerships <i class="fas fa-arrow-right ms-2"></i>
+                </a>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          
+          <div class="col-lg-4">
             <div class="card border-0 shadow-sm h-100">
-              <div class="card-header bg-success bg-opacity-10 border-0 py-4">
-                <h4 class="mb-0 text-success fs-3">
-                  <i class="fas fa-users me-2"></i>For Communities
-                </h4>
+              <div class="card-header bg-success bg-opacity-10 border-0 py-4 text-center">
+                <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-flex mb-3">
+                  <i class="fas fa-users text-success fs-1"></i>
+                </div>
+                <h3 class="h3 mb-0 text-dark">For Communities</h3>
               </div>
               <div class="card-body py-4">
-                <ul class="list-unstyled">
-                  <li class="mb-3 d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
                       <i class="fas fa-check text-success"></i>
                     </div>
-                    <span class="fs-5">Tree planting and adoption programs</span>
+                    <span class="fs-5">Community tree nurseries</span>
                   </li>
-                  <li class="mb-3 d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
                       <i class="fas fa-check text-success"></i>
                     </div>
-                    <span class="fs-5">Environmental education initiatives</span>
+                    <span class="fs-5">Environmental education</span>
                   </li>
-                  <li class="d-flex align-items-center">
-                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
                       <i class="fas fa-check text-success"></i>
                     </div>
-                    <span class="fs-5">Community clean-up campaigns</span>
+                    <span class="fs-5">Water conservation projects</span>
+                  </li>
+                  <li class="d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Clean energy initiatives</span>
                   </li>
                 </ul>
+              </div>
+              <div class="card-footer bg-transparent border-0 py-3 text-center">
+                <a href="/service" class="btn btn-success rounded-pill px-4">
+                  Community Programs <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100">
+              <div class="card-header bg-success bg-opacity-10 border-0 py-4 text-center">
+                <div class="bg-success bg-opacity-10 p-4 rounded-circle d-inline-flex mb-3">
+                  <i class="fas fa-user text-success fs-1"></i>
+                </div>
+                <h3 class="h3 mb-0 text-dark">For Individuals</h3>
+              </div>
+              <div class="card-body py-4">
+                <ul class="list-unstyled mb-4">
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Volunteer opportunities</span>
+                  </li>
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Tree adoption programs</span>
+                  </li>
+                  <li class="mb-3 d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Monthly giving</span>
+                  </li>
+                  <li class="d-flex align-items-start">
+                    <div class="bg-success bg-opacity-10 p-2 rounded-circle me-3 flex-shrink-0 mt-1">
+                      <i class="fas fa-check text-success"></i>
+                    </div>
+                    <span class="fs-5">Advocacy training</span>
+                  </li>
+                </ul>
+              </div>
+              <div class="card-footer bg-transparent border-0 py-3 text-center">
+                <a href="/green-campaign" class="btn btn-success rounded-pill px-4">
+                  Get Involved <i class="fas fa-arrow-right ms-2"></i>
+                </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="modal-footer border-0 py-4">
-        <button type="button" class="btn btn-outline-secondary rounded-pill px-4 py-2 fs-5" data-bs-dismiss="modal">Close</button>
-        <a href="/auth/signup" class="btn btn-success rounded-pill px-4 py-2 fs-5">
-          <i class="fas fa-user-plus me-2"></i>Sign Up Today
+      <div class="modal-footer border-0 bg-light py-4">
+        <button type="button" class="btn btn-outline-secondary rounded-pill px-4" data-bs-dismiss="modal">Close</button>
+        <a href="tel:+254700000000" class="btn btn-outline-success rounded-pill px-4">
+          <i class="fas fa-phone-alt me-2"></i>Call Us
         </a>
       </div>
     </div>
   </div>
 </div>
-
 {% endblock %}

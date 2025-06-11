@@ -118,320 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     });
   
-    // Custom Popover Implementation
-    class Popover {
-      constructor(element, options) {
-        this.element = element;
-        this.options = {
-          placement: options.placement || 'top',
-          trigger: options.trigger || 'click',
-          content: options.content || '',
-          html: options.html || false,
-          sanitize: options.sanitize !== false,
-          title: options.title || ''
-        };
-        this.popoverElement = null;
-        this.setupEventListeners();
-      }
-  
-      setupEventListeners() {
-        if (this.options.trigger === 'click') {
-          this.element.addEventListener('click', () => this.toggle());
-        } else if (this.options.trigger === 'hover') {
-          this.element.addEventListener('mouseenter', () => this.show());
-          this.element.addEventListener('mouseleave', () => this.hide());
-        }
-  
-        // Close when clicking outside
-        document.addEventListener('click', (e) => {
-          if (this.popoverElement && 
-              !this.element.contains(e.target) && 
-              !this.popoverElement.contains(e.target)) {
-            this.hide();
-          }
-        });
-      }
-  
-      createPopoverElement() {
-        const popover = document.createElement('div');
-        popover.className = 'custom-popover';
-        popover.style.position = 'absolute';
-        popover.style.zIndex = '1070';
-        popover.style.maxWidth = '276px';
-        popover.style.fontFamily = 'var(--font-secondary)';
-        popover.style.fontSize = '0.875rem';
-        popover.style.borderRadius = 'var(--border-radius-md)';
-        popover.style.boxShadow = 'var(--shadow-md)';
-        popover.style.backgroundColor = 'var(--color-white)';
-        popover.style.border = '1px solid var(--color-gray-300)';
-        
-        let content = '';
-        if (this.options.title) {
-          content += `<div class="popover-header" style="padding: 0.5rem 1rem; margin: 0; border-bottom: 1px solid var(--color-gray-200); background-color: var(--color-gray-100); border-top-left-radius: calc(var(--border-radius-md) - 1px); border-top-right-radius: calc(var(--border-radius-md) - 1px);">${this.options.title}</div>`;
-        }
-        
-        const contentToRender = this.options.html ? this.options.content : this.escapeHtml(this.options.content);
-        content += `<div class="popover-body" style="padding: 1rem;">${contentToRender}</div>`;
-        
-        popover.innerHTML = content;
-        return popover;
-      }
-  
-      escapeHtml(html) {
-        if (!this.options.sanitize) return html;
-        const div = document.createElement('div');
-        div.textContent = html;
-        return div.innerHTML;
-      }
-  
-      calculatePosition() {
-        const rect = this.element.getBoundingClientRect();
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-        
-        const top = rect.top + scrollTop;
-        const left = rect.left + scrollLeft;
-        
-        const position = {
-          top: 0,
-          left: 0
-        };
-        
-        switch (this.options.placement) {
-          case 'top':
-            position.top = top - this.popoverElement.offsetHeight - 10;
-            position.left = left + (rect.width / 2) - (this.popoverElement.offsetWidth / 2);
-            break;
-          case 'bottom':
-            position.top = top + rect.height + 10;
-            position.left = left + (rect.width / 2) - (this.popoverElement.offsetWidth / 2);
-            break;
-          case 'left':
-            position.top = top + (rect.height / 2) - (this.popoverElement.offsetHeight / 2);
-            position.left = left - this.popoverElement.offsetWidth - 10;
-            break;
-          case 'right':
-            position.top = top + (rect.height / 2) - (this.popoverElement.offsetHeight / 2);
-            position.left = left + rect.width + 10;
-            break;
-        }
-  
-        // Adjust if popover goes off screen
-        const viewportWidth = window.innerWidth;
-        const viewportHeight = window.innerHeight;
-        
-        if (position.left < 0) position.left = 10;
-        if (position.left + this.popoverElement.offsetWidth > viewportWidth) {
-          position.left = viewportWidth - this.popoverElement.offsetWidth - 10;
-        }
-        
-        if (position.top < 0) position.top = 10;
-        if (position.top + this.popoverElement.offsetHeight > viewportHeight + scrollTop) {
-          position.top = top - this.popoverElement.offsetHeight - 10;
-        }
-  
-        return position;
-      }
-  
-      show() {
-        if (this.popoverElement) return;
-  
-        this.popoverElement = this.createPopoverElement();
-        document.body.appendChild(this.popoverElement);
-  
-        const position = this.calculatePosition();
-        this.popoverElement.style.top = position.top + 'px';
-        this.popoverElement.style.left = position.left + 'px';
-        
-        // Animation
-        this.popoverElement.style.opacity = '0';
-        this.popoverElement.style.transform = 'translateY(10px)';
-        this.popoverElement.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        
-        setTimeout(() => {
-          this.popoverElement.style.opacity = '1';
-          this.popoverElement.style.transform = 'translateY(0)';
-        }, 50);
-      }
-  
-      hide() {
-        if (!this.popoverElement) return;
-        
-        this.popoverElement.style.opacity = '0';
-        this.popoverElement.style.transform = 'translateY(10px)';
-        
-        setTimeout(() => {
-          if (this.popoverElement && this.popoverElement.parentNode) {
-            this.popoverElement.parentNode.removeChild(this.popoverElement);
-          }
-          this.popoverElement = null;
-        }, 300);
-      }
-  
-      toggle() {
-        if (this.popoverElement) {
-          this.hide();
-        } else {
-          this.show();
-        }
-      }
-  
-      setContent(content) {
-        this.options.content = content;
-        if (this.popoverElement) {
-          const popoverBody = this.popoverElement.querySelector('.popover-body');
-          if (popoverBody) {
-            if (this.options.html) {
-              popoverBody.innerHTML = content;
-            } else {
-              popoverBody.textContent = content;
-            }
-          }
-        }
-      }
-    }
-  
-    // Initialize popovers with data-bs-toggle="popover"
-    const popoverTriggers = document.querySelectorAll('[data-bs-toggle="popover"]');
-    const popovers = {};
-    
-    popoverTriggers.forEach(element => {
-      const options = {
-        placement: element.getAttribute('data-bs-placement'),
-        trigger: element.getAttribute('data-bs-trigger') || 'click',
-        content: element.getAttribute('data-bs-content') || '',
-        html: element.getAttribute('data-bs-html') === 'true',
-        sanitize: element.getAttribute('data-bs-sanitize') !== 'false',
-        title: element.getAttribute('data-bs-title') || ''
-      };
-      
-      popovers[element.id] = new Popover(element, options);
-    });
-  
-    // Global popover access
-    window.Popover = {
-      getInstance: function(id) {
-        return popovers[id];
-      }
-    };
-  
-    // Shopping Cart Functionality
-    if (document.getElementById('popcart')) {
-      initializeCart();
-    }
-  
-    function initializeCart() {
-      // Get username if logged in
-      const username = document.querySelector('[data-username]')?.getAttribute('data-username') || "guest";
-      const cartKey = "cart_" + username;
-      let cart = JSON.parse(localStorage.getItem(cartKey)) || {};
-  
-      const popcartEl = document.getElementById('popcart');
-      if (popcartEl) {
-        new Popover(popcartEl, {
-          html: true,
-          sanitize: false,
-          content: generatePopoverContent(cart),
-          placement: 'bottom',
-          trigger: 'click'
-        });
-      }
-  
-      function updateCart() {
-        let sum = 0;
-        for (let item in cart) {
-          sum += cart[item][0];
-          const div = document.getElementById('divpr' + item);
-          if (div) {
-            div.innerHTML = `
-              <div class="btn-group w-100">
-                <button id="${item}" class="btn btn-sm btn-danger minus">-</button>
-                <span class="btn btn-sm disabled">${cart[item][0]}</span>
-                <button id="plus${item}" class="btn btn-sm btn-success plus">+</button>
-              </div>`;
-          }
-        }
-        const count = document.getElementById('cartcount');
-        if (count) count.textContent = sum;
-        localStorage.setItem(cartKey, JSON.stringify(cart));
-  
-        if (popcartEl && Popover.getInstance('popcart')) {
-          Popover.getInstance('popcart').setContent(generatePopoverContent(cart));
-        }
-      }
-  
-      document.addEventListener('click', function (e) {
-        if (e.target.classList.contains('cart')) {
-          const id = e.target.id.slice(2);
-          const name = document.getElementById('namepr' + id)?.textContent || "Unknown Tree";
-          const price = parseFloat(document.getElementById('pricepr' + id)?.textContent || 0);
-          const image = document.getElementById('img' + id)?.src || "";
-  
-          cart[id] = cart[id] ? [cart[id][0] + 1, name, price, image] : [1, name, price, image];
-          updateCart();
-        }
-  
-        if (e.target.classList.contains('minus')) {
-          const id = e.target.id;
-          if (cart[id][0] <= 1) {
-            delete cart[id];
-            document.getElementById('divpr' + id).innerHTML = `<button id="pr${id}" class="btn btn-success w-100 cart">Plant This</button>`;
-          } else {
-            cart[id][0] -= 1;
-          }
-          updateCart();
-        }
-  
-        if (e.target.classList.contains('plus')) {
-          const id = e.target.id.replace('plus', '');
-          cart[id][0] += 1;
-          updateCart();
-        }
-      });
-  
-      function generatePopoverContent(cart) {
-        if (Object.keys(cart).length === 0) {
-          return `<div class="p-2">Your cart is empty</div>`;
-        }
-  
-        let html = `<div class="p-2"><h6 class="fw-bold">Your Cart</h6><ul class="list-unstyled mb-2">`;
-        let total = 0;
-  
-        for (const [id, [qty, name, price]] of Object.entries(cart)) {
-          html += `<li>${name} × ${qty} — KES ${(price * qty).toFixed(2)}</li>`;
-          total += price * qty;
-        }
-  
-        html += `</ul>
-          <hr>
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <strong>Total: KES ${total.toFixed(2)}</strong>
-          </div>
-          <div class="d-grid gap-2">
-            <a href="/checkout" class="btn btn-success btn-sm">Checkout</a>
-            <button onclick="window.clearCart()" class="btn btn-danger btn-sm">Clear Cart</button>
-          </div>
-        </div>`;
-  
-        return html;
-      }
-  
-      window.clearCart = function () {
-        cart = {};
-        localStorage.removeItem(cartKey);
-        updateCart();
-        document.querySelectorAll('.divpr').forEach(div => {
-          const id = div.id.replace('divpr', '');
-          div.innerHTML = `<button id="pr${id}" class="btn btn-success w-100 cart">Plant This</button>`;
-        });
-        if (popcartEl && Popover.getInstance('popcart')) {
-          Popover.getInstance('popcart').hide();
-        }
-      };
-  
-      updateCart();
-    }
-  
     // Form Validation
     const forms = document.querySelectorAll('.needs-validation');
     
@@ -646,6 +332,97 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       });
     }
+  });
+
+  // Add some interactive elements
+document.addEventListener('DOMContentLoaded', function() {
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  });
+  
+  // Add parallax effect to background
+  window.addEventListener('scroll', function() {
+    const scrolled = window.pageYOffset;
+    const heroBackground = document.querySelector('.hero-background');
+    if (heroBackground) {
+      heroBackground.style.transform = `translateY(${scrolled * 0.5}px)`;
+    }
+  });
+  
+  // Add intersection observer for animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running';
+      }
+    });
+  }, observerOptions);
+  
+  document.querySelectorAll('[class*="animate-"]').forEach(el => {
+    el.style.animationPlayState = 'paused';
+    observer.observe(el);
+  });
+});
+
+  // Counter animation
+  document.addEventListener('DOMContentLoaded', function() {
+    const counters = document.querySelectorAll('.counter-value');
+    const speed = 200;
+    
+    function animateCounters() {
+      counters.forEach(counter => {
+        const target = +counter.getAttribute('data-count');
+        const count = +counter.innerText;
+        const increment = target / speed;
+        
+        if(count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 1);
+        } else {
+            counter.innerText = target.toLocaleString();
+        }
+      });
+    }
+    
+    // Start animation when section is in view
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: 0.5});
+    
+    document.querySelectorAll('.counter-value').forEach(counter => {
+      observer.observe(counter.closest('section'));
+    });
+  });
+
+  //floating labels
+   document.addEventListener('DOMContentLoaded', () => {
+    const particles = document.querySelectorAll('.particle');
+    particles.forEach(particle => {
+      const randomLeft = Math.floor(Math.random() * 100); // percent
+      const randomDelay = Math.random() * 10; // seconds
+      particle.style.left = `${randomLeft}%`;
+      particle.style.animationDelay = `${randomDelay}s`;
+    });
   });
 
 

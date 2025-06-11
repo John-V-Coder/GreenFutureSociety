@@ -17,7 +17,10 @@ import json, logging, uuid
 
 # Create your views here.
 def index(request):
-    return render(request, 'index.html')
+    context = {
+        'particle_range': range(100)  
+    }
+    return render(request, 'index.html', context)
 
 def contact(request):
     if request.method=="POST":

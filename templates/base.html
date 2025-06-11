@@ -35,32 +35,32 @@
   <header id="header" class="header fixed-top">
     <div class="container-fluid container-xl position-relative">
       <div class="header-inner d-flex align-items-center justify-content-between">
-        <nav id="navmenu" class="navmenu">
-          <a href="{% url 'index' %}" class="logo d-flex flex-column align-items-center justify-content-center">
-            <img src="{% static 'assets/img/hero-image.png' %}" alt="Green Future Society Logo" class="logo-img">
-            <span class="GFS text-success">Green Future Society</span>
-          </a>
+       <nav id="navmenu" class="navmenu">
+  <a href="{% url 'index' %}" class="logo d-flex flex-row align-items-center justify-content-center">
+    <img src="{% static 'assets/img/hero-image.png' %}" alt="Green Future Society Logo" class="logo-img">
+    <span class="GFS text-success ms-2">Green Future Society</span>
+  </a>
 
-          <ul>
-            <li><a class="nav-link scrollto {% if request.path == '/' %}active{% endif %}" href="/">Home</a></li>
-            <li><a class="nav-link scrollto" href="/service">AboutUs</a></li>
-            <li><a class="nav-link scrollto" href="/green-campaign">Green Campaign</a></li>
-            <li><a class="nav-link scrollto" href="/events">Events</a></li>
-            <li><a class="nav-link scrollto" href="/stories">Testimonies</a></li>
-            <li><a class="nav-link scrollto" href="/partners">Partners</a></li>
-            <li><a class="nav-link scrollto" href="/farming-academy">Green Academy</a></li>
-            <li><a class="nav-link scrollto" href="/blog">Blog</a></li>
-            <li><a class="nav-link scrollto" href="/donate">Donate</a></li>
-            <!-- Messages -->
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-                <strong>{{ message }}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            {% endfor %}
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none fas fa-bars"></i>
-        </nav>
+  <ul>
+    <li><a class="nav-link scrollto {% if request.path == '/' %}active{% endif %}" href="/">Home</a></li>
+    <li><a class="nav-link scrollto" href="/service">AboutUs</a></li>
+    <li><a class="nav-link scrollto" href="/green-campaign">Green Campaign</a></li>
+    <li><a class="nav-link scrollto" href="/farming-academy">Green Academy</a></li>
+    <li><a class="nav-link scrollto" href="/events">Events</a></li>
+    <li><a class="nav-link scrollto" href="/stories">Testimonies</a></li>
+    <li><a class="nav-link scrollto" href="/partners">Partners</a></li>
+    <li><a class="nav-link scrollto" href="/blog">Blog</a></li>
+    <li><a class="nav-link scrollto" href="/donate">Donate</a></li>
+
+    {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    {% endfor %}
+  </ul>
+  <i class="mobile-nav-toggle d-xl-none fas fa-bars"></i>
+</nav>
       </div>
     </div>
   </header>
