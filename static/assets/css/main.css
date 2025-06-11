@@ -1187,6 +1187,43 @@ main.main {
   }
 }
 
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: 32px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.analytics-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.analytics-item {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-item h1 {
+    font-size: 48px;
+    color: #27ae60;
+    margin: 0;
+}
+
+.analytics-item p {
+    font-size: 18px;
+    color: #34495e;
+    margin: 5px 0 0;
+}
 
 
   /* ======= Footer ======= */
