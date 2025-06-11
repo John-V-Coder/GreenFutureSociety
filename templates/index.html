@@ -135,20 +135,19 @@
     <div class="col-lg-6 d-flex align-items-center bg-white py-6 py-lg-0">
       <div class="container py-5">
         <div class="px-lg-5">
-          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Our Mission</span>
+         <span class="badge bg-light text-success fs-6 mb-3 px-4 py-2 rounded-pill border border-success">Our Mission</span>
           <h2 class="display-4 fw-bold text-dark mb-4">Cultivating <span class="text-success">Sustainable</span> Change</h2>
           <p class="lead text-muted mb-5">
             At Green Future Society, we're transforming Kenya's landscape through innovative agroforestry, community empowerment, 
             and climate-smart solutions that benefit both people and planet.
           </p>
-
           <div class="row g-4">
             <div class="col-md-6">
               <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden transition-all hover-lift">
                 <div class="card-body p-4">
                   <div class="d-flex align-items-center mb-3">
-                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3 flex-shrink-0">
-                      <i class="fas fa-history text-success fs-2"></i>
+                    <div class="transparent-ring-icon me-3 flex-shrink-0">
+                      <i class="fas fa-history"></i>
                     </div>
                     <h3 class="card-title mb-0 text-dark fs-4">Our Journey</h3>
                   </div>
@@ -158,9 +157,9 @@
                   <div class="mt-3 pt-3 border-top">
                     <div class="d-flex align-items-center">
                       <i class="fas fa-calendar-check text-success me-3 fs-5"></i>
-                      <div>
-                        <p class="mb-0 small fw-medium">Years of Impact</p>
-                        <h4 class="mb-0 text-success">8+</h4>
+                      <div class="text-center p-3 rounded" style="background-color: #e6f4ea; max-width: 250px;">
+                         <p class="mb-1 text-uppercase text-muted small fw-semibold">Years of Impact</p>
+                         <h4 class="mb-0 text-success fw-bold">8+</h4>
                       </div>
                     </div>
                   </div>
@@ -176,8 +175,8 @@
               <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden transition-all hover-lift">
                 <div class="card-body p-4">
                   <div class="d-flex align-items-center mb-3">
-                    <div class="bg-success bg-opacity-10 p-3 rounded-circle me-3 flex-shrink-0">
-                      <i class="fas fa-bullseye text-success fs-2"></i>
+                    <div class="d-flex align-items-center justify-content-center border border-success border-2 p-3 rounded-circle me-3 flex-shrink-0" style="width: 60px; height: 60px;">
+                      <i class="fas fa-bullseye text-success fs-4"></i>
                     </div>
                     <h3 class="card-title mb-0 text-dark fs-4">Our Vision</h3>
                   </div>
@@ -187,9 +186,9 @@
                   <div class="mt-3 pt-3 border-top">
                     <div class="d-flex align-items-center">
                       <i class="fas fa-tree text-success me-3 fs-5"></i>
-                      <div>
-                        <p class="mb-0 small fw-medium">Forest Target</p>
-                        <h4 class="mb-0 text-success">30% by 2030</h4>
+                      <div class="text-center p-3 rounded" style="background-color: #e6f4ea; max-width: 250px;">
+                        <p class="mb-1 text-uppercase text-muted small fw-semibold">Forest Target</p>
+                        <h4 class="mb-0 text-success fw-bold">30% by 2030</h4>
                       </div>
                     </div>
                   </div>
@@ -340,145 +339,7 @@
   </section>
 
   <!-- Testimonials Section -->
-  <section class="py-7 bg-light" aria-label="Success Stories">
-    <div class="container">
-      <div class="row justify-content-center text-center mb-6">
-        <div class="col-lg-8">
-          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Voices of Change</span>
-          <h2 class="display-4 fw-bold text-dark mb-4">Community <span class="text-success">Stories</span></h2>
-          <p class="lead text-muted">Hear from those whose lives we've transformed together</p>
-        </div>
-      </div>
-      
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
-              <img src="{% static 'assets/img/farmer-testimonial.jpg' %}" 
-                   alt="Farmer in field" 
-                   class="img-fluid w-100 h-100 object-fit-cover"
-                   loading="lazy">
-              <div class="position-absolute bottom-0 start-0 p-3">
-                <div class="bg-success text-white p-2 rounded-circle">
-                  <i class="fas fa-quote-left fs-4"></i>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-4">
-              <p class="card-text fs-5 mb-4">
-                "The agroforestry training transformed my farm. I now grow food crops with fruit trees,
-                earning more while improving the soil."
-              </p>
-              <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/farmer-avatar.jpg' %}" 
-                     alt="John Kamau" 
-                     class="rounded-circle me-3" 
-                     width="50" 
-                     height="50"
-                     loading="lazy">
-                <div>
-                  <h5 class="mb-0 fw-bold">John Kamau</h5>
-                  <small class="text-muted">Smallholder Farmer, Nandi County</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
-              <img src="{% static 'assets/img/teacher-testimonial.jpg' %}" 
-                   alt="Teacher with students" 
-                   class="img-fluid w-100 h-100 object-fit-cover"
-                   loading="lazy">
-              <div class="position-absolute bottom-0 start-0 p-3">
-                <div class="bg-success text-white p-2 rounded-circle">
-                  <i class="fas fa-quote-left fs-4"></i>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-4">
-              <p class="card-text fs-5 mb-4">
-                "Our environmental club has become the most popular activity. Students now lead tree planting
-                and recycling initiatives in our community."
-              </p>
-              <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/teacher-avatar.jpg' %}" 
-                     alt="Grace Atieno" 
-                     class="rounded-circle me-3" 
-                     width="50" 
-                     height="50"
-                     loading="lazy">
-                <div>
-                  <h5 class="mb-0 fw-bold">Grace Atieno</h5>
-                  <small class="text-muted">Teacher, Kisumu County</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
-            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
-              <img src="{% static 'assets/img/woman-testimonial.jpg' %}" 
-                   alt="Community leader" 
-                   class="img-fluid w-100 h-100 object-fit-cover"
-                   loading="lazy">
-              <div class="position-absolute bottom-0 start-0 p-3">
-                <div class="bg-success text-white p-2 rounded-circle">
-                  <i class="fas fa-quote-left fs-4"></i>
-                </div>
-              </div>
-            </div>
-            <div class="card-body p-4">
-              <p class="card-text fs-5 mb-4">
-                "The tree nursery project gave our women's group a sustainable income while restoring our
-                local watershed. We're now climate champions!"
-              </p>
-              <div class="d-flex align-items-center">
-                <img src="{% static 'assets/img/woman-avatar.jpg' %}" 
-                     alt="Mary Wanjiku" 
-                     class="rounded-circle me-3" 
-                     width="50" 
-                     height="50"
-                     loading="lazy">
-                <div>
-                  <h5 class="mb-0 fw-bold">Mary Wanjiku</h5>
-                  <small class="text-muted">Community Leader, Nakuru County</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section with Gradient Background -->
-  <section class="py-8 bg-success position-relative overflow-hidden" aria-labelledby="cta-heading">
-    <div class="cta-gradient-overlay"></div>
-    <div class="container position-relative">
-      <div class="row justify-content-center text-center">
-        <div class="col-lg-8">
-          <span class="badge bg-white bg-opacity-20 text-white fs-6 mb-3 px-4 py-2 rounded-pill">Take Action</span>
-          <h2 id="cta-heading" class="display-3 fw-bold text-white mb-4">Ready to Grow <span class="text-warning">With Us?</span></h2>
-          <p class="lead text-white opacity-75 mb-5 mx-auto" style="max-width: 700px;">
-            Whether you're a farmer, student, business, or concerned citizen, there's a place for you in Kenya's green revolution.
-          </p>
-          <div class="d-flex flex-wrap justify-content-center gap-3">
-            <a href="{% url 'green_legacy' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fs-4 fw-medium">
-              <i class="fas fa-book-open me-2"></i>Learn About Our Programs
-            </a>
-            <button type="button" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fs-4 fw-medium" data-bs-toggle="modal" data-bs-target="#joinModal">
-              <i class="fas fa-hands-helping me-2"></i>Partner With Us
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  
 </main>
 
 <!-- Join Modal -->

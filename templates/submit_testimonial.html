@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Submit Testimonial{% endblock %}
+{% block content %}
+<section class="py-7 bg-light">
+    <div class="container">
+        <h2 class="text-center mb-5">Share Your Story</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <form method="POST" enctype="multipart/form-data" class="p-4 bg-white shadow rounded">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button type="submit" class="btn btn-success btn-lg mt-3">Submit Testimonial</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
