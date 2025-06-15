@@ -4,73 +4,255 @@
 
 {% block title %}Green Movement{% endblock %}
  
-{% block content %}
+{% block hero %} 
+<section class="hero-container">
+  <!-- Background Image -->
+  <div class="hero-background">
+    <img
+      src="{% static 'assets/img/about_us_hero.jpg' %}"
+      alt="Green Future Society promoting sustainable agriculture and forestry in Kenya"
+      class="hero-image"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="floating-particles">
+    <!-- You can dynamically add particles using JS if needed -->
+    {% for _ in particle_range %}
+    <div class="particle"></div>
+    {% endfor %}
+  </div>
+
+  <!-- Main Content -->
+  <div class="hero-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="hero-text">
+            <h1 class="hero-title animate-fade-up">*</h1>
+            <h1 class="hero-title animate-fade-up">G.F.S</h1>
+            <div class="cta-container animate-fade-up-delay-2">
+              <a href="/" class="btn-secondary-custom" aria-label="Discover More about Our Services">
+                <i class="fas fa-play-circle"></i> Home
+              </a>
+              <a href="/green-campaign" class="btn-primary-custom" aria-label="Start Your Green Journey">
+                <i class="fas fa-leaf"></i> Green Campaign
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- How We Achieve Our Objectives (Photo-Based Activities Section) -->
 <section class="py-5">
   <div class="container">
     <h2 class="fw-bold mb-4 text-success text-center">Our Key Activities</h2>
     <div class="row g-4">
 
-      <!-- Activity 1 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="{% static 'assets/img/tree_nursery.jpg' %}" class="card-img-top" alt="Tree Nursery Management">
-          <div class="card-body">
-            <h5 class="card-title text-success">Tree Nursery Management</h5>
-            <p class="card-text small">Training communities & growing seedlings.</p>
-            <a href="/activities/tree-nursery-management" class="btn btn-outline-success btn-sm mt-2">Read More</a>
-          </div>
-        </div>
-      </div>
+   <!-- Activity 1 -->
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm border-0">
+    <img src="{% static 'assets/img/tree_nursery.jpg' %}" class="card-img-top" alt="Tree Nursery Management">
+    <div class="card-body">
+      <h5 class="card-title text-success">Tree Nursery Management</h5>
+      <p class="card-text small">Training communities & growing seedlings.</p>
 
-      <!-- Activity 2 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="{% static 'assets/img/community_awareness.jpg' %}" class="card-img-top" alt="Community Awareness">
-          <div class="card-body">
-            <h5 class="card-title text-success">Community Awareness</h5>
-            <p class="card-text small">Educating communities on sustainability.</p>
-            <a href="/activities/community-awareness" class="btn btn-outline-success btn-sm mt-2">Read More</a>
-          </div>
-        </div>
-      </div>
+      <!-- Read More Modal Trigger -->
+      <button class="btn btn-outline-success btn-sm mt-2 me-2" data-bs-toggle="modal" data-bs-target="#treeNurseryModal">
+        Read More
+      </button>
+    </div>
+  </div>
+</div>
+
+
+     <!-- Activity 2 -->
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm border-0">
+    <img src="{% static 'assets/img/community_awareness.jpg' %}" class="card-img-top" alt="Community Awareness">
+    <div class="card-body">
+      <h5 class="card-title text-success">Community Awareness</h5>
+      <p class="card-text small">Educating communities on sustainability.</p>
+      <button class="btn btn-outline-success btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#communityAwarenessModal">
+        Read More
+      </button>
+    </div>
+  </div>
+</div>
+
 
       <!-- Activity 3 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="{% static 'assets/img/tree_donations.jpg' %}" class="card-img-top" alt="Tree Donations">
-          <div class="card-body">
-            <h5 class="card-title text-success">Tree Donations</h5>
-            <p class="card-text small">Donating seedlings & offering support.</p>
-            <a href="/activities/tree-donations" class="btn btn-outline-success btn-sm mt-2">Read More</a>
-          </div>
-        </div>
-      </div>
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm border-0">
+    <img src="{% static 'assets/img/youth _education.jpg' %}" class="card-img-top" alt="Tree Donations">
+    <div class="card-body">
+      <h5 class="card-title text-success">Tree Donations</h5>
+      <p class="card-text small">Donating seedlings & offering support.</p>
+
+      <!-- Read More Modal Trigger -->
+      <button class="btn btn-outline-success btn-sm mt-2 me-2" data-bs-toggle="modal" data-bs-target="#treeDonationsModal">
+        Read More
+      </button>
+    </div>
+  </div>
+</div>
+
 
       <!-- Activity 4 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="{% static 'assets/img/alumni_program.jpg' %}" class="card-img-top" alt="Alumni Afforestation Programs">
-          <div class="card-body">
-            <h5 class="card-title text-success">Alumni Afforestation</h5>
-            <p class="card-text small">Partnering with schools & alumni.</p>
-            <a href="/activities/alumni-afforestation" class="btn btn-outline-success btn-sm mt-2">Read More</a>
-          </div>
-        </div>
-      </div>
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm border-0">
+    <img src="{% static 'assets/img/alumni_program.jpg' %}" class="card-img-top" alt="Alumni Afforestation Programs">
+    <div class="card-body">
+      <h5 class="card-title text-success">Alumni Afforestation</h5>
+      <p class="card-text small">Partnering with schools & alumni.</p>
 
-      <!-- Activity 5 -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm border-0">
-          <img src="{% static 'assets/img/community_cleanups.jpg' %}" class="card-img-top" alt="Community Clean-Ups">
-          <div class="card-body">
-            <h5 class="card-title text-success">Community Clean-Ups</h5>
-            <p class="card-text small">Cleaning public spaces & planting trees.</p>
-            <a href="/activities/community-cleanups" class="btn btn-outline-success btn-sm mt-2">Read More</a>
-          </div>
-        </div>
-      </div>
+      <!-- Read More Modal Trigger -->
+      <button class="btn btn-outline-success btn-sm mt-2 me-2" data-bs-toggle="modal" data-bs-target="#alumniAfforestationModal">
+        Read More
+      </button>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Activity 5 -->
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm border-0">
+    <img src="{% static 'assets/img/community_cleanups.jpg' %}" class="card-img-top" alt="Community Clean-Ups">
+    <div class="card-body">
+      <h5 class="card-title text-success">Community Clean-Ups</h5>
+      <p class="card-text small">Cleaning public spaces & planting trees.</p>
+
+      <!-- Read More Modal Trigger -->
+      <button class="btn btn-outline-success btn-sm mt-2 me-2" data-bs-toggle="modal" data-bs-target="#communityCleanupsModal">
+        Read More
+      </button>
+    </div>
+  </div>
+</div>
 
     </div>
   </div>
+
+
+<!-- Tree Nursery Management Modal -->
+<div class="modal fade" id="treeNurseryModal" tabindex="-1" aria-labelledby="treeNurseryModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="treeNurseryModalLabel">Tree Nursery Management</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'assets/img/tree_nursery.jpg' %}" class="img-fluid mb-3 rounded" alt="Tree Nursery Management">
+        <p><strong>Detailed Overview:</strong></p>
+        <p>Through Tree Nursery Management, we train communities to establish and manage tree nurseries that provide quality seedlings for reforestation and community greening projects. This program supports sustainable agriculture and environmental conservation.</p>
+        <ul>
+          <li>Seedling production training</li>
+          <li>Tree species selection and care</li>
+          <li>Community-managed nurseries</li>
+          <li>Support for reforestation efforts</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Community Awareness Modal -->
+<div class="modal fade" id="communityAwarenessModal" tabindex="-1" aria-labelledby="communityAwarenessModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="communityAwarenessModalLabel">Community Awareness</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'assets/img/community_awareness.jpg' %}" class="img-fluid mb-3 rounded" alt="Community Awareness">
+        <p><strong>Detailed Overview:</strong></p>
+        <p>Our Community Awareness program focuses on educating individuals and groups about sustainability, environmental conservation, and green living practices. Through workshops, local events, and direct engagement, we spread the knowledge needed to create lasting change.</p>
+        <ul>
+          <li>Environmental education workshops</li>
+          <li>Community engagement and forums</li>
+          <li>Collaboration with schools and local leaders</li>
+          <li>Distribution of educational materials</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Tree Donations Modal -->
+<div class="modal fade" id="treeDonationsModal" tabindex="-1" aria-labelledby="treeDonationsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="treeDonationsModalLabel">Tree Donations</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'assets/img/tree_donations.jpg' %}" class="img-fluid mb-3 rounded" alt="Tree Donations">
+        <p><strong>Detailed Overview:</strong></p>
+        <p>Through our Tree Donations program, we accept seedlings, monetary donations for tree planting, and other forms of support to help communities engage in reforestation and sustainable farming initiatives.</p>
+        <ul>
+          <li>Donate seedlings to communities in need</li>
+          <li>Support tree planting events financially</li>
+          <li>Provide tools and resources for tree growth</li>
+          <li>Partner with schools and local groups</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Alumni Afforestation Modal -->
+<div class="modal fade" id="alumniAfforestationModal" tabindex="-1" aria-labelledby="alumniAfforestationModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="alumniAfforestationModalLabel">Alumni Afforestation Programs</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'assets/img/alumni_program.jpg' %}" class="img-fluid mb-3 rounded" alt="Alumni Afforestation Programs">
+        <p><strong>Detailed Overview:</strong></p>
+        <p>Our Alumni Afforestation Program collaborates with schools, alumni groups, and local communities to drive tree planting and conservation efforts, strengthening long-term environmental impact.</p>
+        <ul>
+          <li>Organize tree planting events with alumni</li>
+          <li>Promote environmental awareness in schools</li>
+          <li>Provide seedlings and planting materials</li>
+          <li>Establish school-based green clubs</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Community Clean-Ups Modal -->
+<div class="modal fade" id="communityCleanupsModal" tabindex="-1" aria-labelledby="communityCleanupsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="communityCleanupsModalLabel">Community Clean-Ups</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <img src="{% static 'assets/img/community_cleanups.jpg' %}" class="img-fluid mb-3 rounded" alt="Community Clean-Ups">
+        <p><strong>Detailed Overview:</strong></p>
+        <p>Our Community Clean-Ups bring together volunteers to clean public spaces, remove waste, and plant trees to restore green areas. These activities promote sustainable living and encourage community ownership of the environment.</p>
+        <ul>
+          <li>Public park clean-ups</li>
+          <li>Street and beach cleaning initiatives</li>
+          <li>Tree planting in cleaned areas</li>
+          <li>Educational sessions on waste management</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+{% endblock hero %}
+{% block body %}
 {% endblock %}

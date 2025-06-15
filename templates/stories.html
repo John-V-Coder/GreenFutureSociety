@@ -2,17 +2,59 @@
 {% load static %}
 
 {% block title %}Testimonials{% endblock %}
-{% block content %}
-<section class="py-7 bg-light" aria-label="Success Stories">
+
+{% block hero %}
+<section class="hero-container">
+  <!-- Background Image -->
+  <div class="hero-background">
+    <img
+      src="{% static 'assets/img/about_us_hero.jpg' %}"
+      alt="Green Future Society promoting sustainable agriculture and forestry in Kenya"
+      class="hero-image"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="floating-particles">
+    <!-- You can dynamically add particles using JS if needed -->
+    {% for _ in particle_range %}
+    <div class="particle"></div>
+    {% endfor %}
+  </div>
+
+  <!-- Main Content -->
+  <div class="hero-content">
     <div class="container">
-      <div class="row justify-content-center text-center mb-6">
-        <div class="col-lg-8">
-          <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Voices of Change</span>
-          <h2 class="display-4 fw-bold text-dark mb-4">Community <span class="text-success">Stories</span></h2>
-          <p class="lead text-muted">Hear from those whose lives we've transformed together</p>
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="hero-text">
+            <h1 class="hero-title animate-fade-up">|</h1>
+            <h1 class="hero-title animate-fade-up">G.F.S</h1>
+            <div class="cta-container animate-fade-up-delay-2">
+              <a href="/" class="btn-secondary-custom" aria-label="Discover More about Our Services">
+                <i class="fas fa-play-circle"></i> Home
+              </a>
+              <a href="/stories" class="btn-primary-custom" aria-label="Start Your Green Journey">
+                <i class="fas fa-leaf"></i> Testimonials
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-      
+    </div>
+  </div>
+</section>
+<section class="py-7 bg-light" aria-label="Success Stories">
+    <div class="container">
+       <div class="container">
+    <div class="row justify-content-center text-center mb-6">
+      <div class="col-lg-8">
+        <span class="badge bg-success bg-opacity-20 text-success fs-6 mb-3 px-4 py-2 rounded-pill">Voices of Change</span>
+        <h2 class="display-4 fw-bold text-dark mb-4">Community <span class="text-success">Stories</span></h2>
+        <p class="lead text-muted">Real impact from real people. Discover how our programs are changing lives across Kenya.</p>
+      </div>
+    </div>  
       <div class="row g-4">
         <div class="col-md-4">
           <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
@@ -113,42 +155,231 @@
                 </div>
               </div>
             </div>
+            
           </div>
+
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/farmer-testimonial.jpg' %}" 
+                   alt="Farmer in field" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "The agroforestry training transformed my farm. I now grow food crops with fruit trees,
+                earning more while improving the soil."
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/farmer-avatar.jpg' %}" 
+                     alt="John Kamau" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">John Kamau</h5>
+                  <small class="text-muted">Smallholder Farmer, Nandi County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/teacher-testimonial.jpg' %}" 
+                   alt="Teacher with students" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "Our environmental club has become the most popular activity. Students now lead tree planting
+                and recycling initiatives in our community."
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/teacher-avatar.jpg' %}" 
+                     alt="Grace Atieno" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">Grace Atieno</h5>
+                  <small class="text-muted">Teacher, Kisumu County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/woman-testimonial.jpg' %}" 
+                   alt="Community leader" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "The tree nursery project gave our women's group a sustainable income while restoring our
+                local watershed. We're now climate champions!"
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/woman-avatar.jpg' %}" 
+                     alt="Mary Wanjiku" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">Mary Wanjiku</h5>
+                  <small class="text-muted">Community Leader, Nakuru County</small>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/farmer-testimonial.jpg' %}" 
+                   alt="Farmer in field" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "The agroforestry training transformed my farm. I now grow food crops with fruit trees,
+                earning more while improving the soil."
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/farmer-avatar.jpg' %}" 
+                     alt="John Kamau" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">John Kamau</h5>
+                  <small class="text-muted">Smallholder Farmer, Nandi County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/teacher-testimonial.jpg' %}" 
+                   alt="Teacher with students" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "Our environmental club has become the most popular activity. Students now lead tree planting
+                and recycling initiatives in our community."
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/teacher-avatar.jpg' %}" 
+                     alt="Grace Atieno" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">Grace Atieno</h5>
+                  <small class="text-muted">Teacher, Kisumu County</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="col-md-4">
+          <div class="card border-0 shadow-sm h-100 rounded-3 overflow-hidden">
+            <div class="card-img-top position-relative" style="height: 200px; overflow: hidden;">
+              <img src="{% static 'assets/img/woman-testimonial.jpg' %}" 
+                   alt="Community leader" 
+                   class="img-fluid w-100 h-100 object-fit-cover"
+                   loading="lazy">
+              <div class="position-absolute bottom-0 start-0 p-3">
+                <div class="bg-success text-white p-2 rounded-circle">
+                  <i class="fas fa-quote-left fs-4"></i>
+                </div>
+              </div>
+            </div>
+            <div class="card-body p-4">
+              <p class="card-text fs-5 mb-4">
+                "The tree nursery project gave our women's group a sustainable income while restoring our
+                local watershed. We're now climate champions!"
+              </p>
+              <div class="d-flex align-items-center">
+                <img src="{% static 'assets/img/woman-avatar.jpg' %}" 
+                     alt="Mary Wanjiku" 
+                     class="rounded-circle me-3" 
+                     width="50" 
+                     height="50"
+                     loading="lazy">
+                <div>
+                  <h5 class="mb-0 fw-bold">Mary Wanjiku</h5>
+                  <small class="text-muted">Community Leader, Nakuru County</small>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+          
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section with Gradient Background -->
-<section class="py-8 bg-success position-relative overflow-hidden" aria-labelledby="cta-heading">
-  <div class="cta-gradient-overlay"></div>
-  <div class="container position-relative">
-    <div class="row justify-content-center text-center">
-      <div class="col-lg-8">
-        <span class="badge bg-white bg-opacity-20 text-white fs-6 mb-3 px-4 py-2 rounded-pill">Take Action</span>
-        <h2 id="cta-heading" class="display-3 fw-bold text-white mb-4">Ready to Grow <span class="text-warning">With Us?</span></h2>
-        <p class="lead text-white opacity-75 mb-5 mx-auto" style="max-width: 700px;">
-          Whether you're a farmer, student, business, or concerned citizen, there's a place for you in Kenya's green revolution.
-        </p>
-        <div class="d-flex flex-wrap justify-content-center gap-3 mb-4">
-          <a href="{% url 'green_legacy' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fs-4 fw-medium">
-            <i class="fas fa-book-open me-2"></i>About Us
-          </a>
-          <a href="/contact" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill fs-4 fw-medium">
-            <i class="fas fa-hands-helping me-2"></i>Contact Us
-          </a>
-        </div>
-        
-        <!-- Social Media Links -->
-        <div class="social-links d-flex justify-content-center gap-4">
-          <a href="#" class="text-white fs-3"><i class="fab fa-twitter"></i></a>
-          <a href="#" class="text-white fs-3"><i class="fab fa-facebook"></i></a>
-          <a href="#" class="text-white fs-3"><i class="fab fa-instagram"></i></a>
-          <a href="#" class="text-white fs-3"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+{% endblock %}
 
+{% block content %}
+  <!-- Footer Actions -->
+  <footer class="footer-links text-center">
+    <div class="container d-flex flex-column flex-md-row justify-content-center align-items-center gap-3">
+          <div class="text-center mt-8">
+        <a href="/contact" class="btn btn-outline-success rounded-pill px-5 py-3">Contact Us for More Information</a>
+    </div>
+      <a href="/" class="btn btn-outline-secondary btn-custom">Back to Home</a>
+      </a>
+    </div>
+  </footer>
 {% endblock %}
