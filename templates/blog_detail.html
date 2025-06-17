@@ -3,7 +3,48 @@
 
 {% block title %}{{ post.title }}{% endblock %}
 
-{% block content %}
+{% block hero %}
+<section class="hero-container">
+  <!-- Background Image -->
+  <div class="hero-background">
+    <img
+      src="{% static 'assets/img/about_us_hero.jpg' %}"
+      alt="Green Future Society promoting sustainable agriculture and forestry in Kenya"
+      class="hero-image"
+    />
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- Floating Particles -->
+  <div class="floating-particles">
+    <!-- You can dynamically add particles using JS if needed -->
+    {% for _ in particle_range %}
+    <div class="particle"></div>
+    {% endfor %}
+  </div>
+
+  <!-- Main Content -->
+  <div class="hero-content">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10 col-xl-8">
+          <div class="hero-text">
+            <h1 class="hero-title animate-fade-up"></h1>
+            <h1 class="hero-title animate-fade-up">G.F.S</h1>
+            <div class="cta-container animate-fade-up-delay-2">
+              <a href="/" class="btn-secondary-custom" aria-label="Discover More about Our Services">
+                <i class="fas fa-play-circle"></i> Home
+              </a>
+              <a href="/green-campaign" class="btn-primary-custom" aria-label="Start Your Green Journey">
+                <i class="fas fa-leaf"></i> Green Campaign
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 <div class="container py-5 d-flex justify-content-center align-items-center text-light">
   <div class="card bg-dark text-light shadow-lg rounded-4 w-100" style="max-width: 900px;">
     

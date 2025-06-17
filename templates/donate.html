@@ -3,22 +3,27 @@
 
 {% block title %}Make a Donation | Green Future Society{% endblock title %}
 
-{% block content %}
+{% block hero %}
 <div class="container-fluid bg-success text-white py-5 text-center shadow-lg">
+  <br />
+  <br />
+  <br />
   <h1 class="display-5 fw-bold">Support Our Mission</h1>
   <p class="lead">Your donation helps us plant more trees and fight climate change.</p>
 </div>
-{% endblock content %}
-
-{% block body %}
+      <!-- ✅ Success/Error Messages -->
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                  {{ message }}
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+              {% endfor %}
+            {% endif %}
 <section class="py-5">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-
-        {% if message %}
-          <div class="alert alert-success">{{ message }}</div>
-        {% endif %}
 
         <div class="card bg-dark text-light shadow-lg border-success rounded-4">
           <div class="card-body p-4">
@@ -110,6 +115,7 @@
   </div>
 </section>
 
+<!-- Script to toggle payment info display -->
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     const mpesaRadio = document.getElementById("mpesa");
@@ -134,7 +140,7 @@
       radio.addEventListener("change", togglePaymentDetails);
     });
 
-    togglePaymentDetails(); // on load
+    togglePaymentDetails(); // Run on page load
   });
 </script>
-{% endblock body %}
+{% endblock %}

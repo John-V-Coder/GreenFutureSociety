@@ -37,9 +37,6 @@ def contact(request):
 def service(request):
     return render(request, "service.html")
 
-def green_legacy(request):
-    return render(request, 'green_legacy.html')
-
 def partners(request):
     return render(request, 'partners.html')
 
