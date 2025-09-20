@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Home - Green Future Society{% endblock %}
+{% block title %}Home | Green Future Society{% endblock %}
 
 <!-- HERO SECTION WITH UNIQUE STYLING -->
 {% block hero %}
@@ -34,8 +34,7 @@
             <br />
             <h1 class="hero-title animate-fade-up">Green Future Society</h1>
             <p class="hero-subtitle animate-fade-up-delay-1">
-              Transforming Kenya's landscape through sustainable forestry and regenerative agriculture. 
-              Join us in building a greener tomorrow, one tree at a time.
+              We empower communities in Kenya’s most vulnerable counties to restore critical tree cover through sustainable planting, education, and climate-smart action building resilience today for a greener, fairer tomorrow. 
             </p>           
             <div class="cta-container animate-fade-up-delay-2">
               <a href="/service" class="btn-secondary-custom" aria-label="Discover More about Our Services">
@@ -55,16 +54,16 @@
   <div class="wrapper">
     <div class="stats-container animate-fade-up-delay-3">
       <div class="stat-item glass-card">
-        <span class="stat-number">8+</span>
+        <span class="stat-number">10+</span>
         <span class="stat-label">Years Impact</span>
       </div>
       <div class="stat-item glass-card">
-        <span class="stat-number">50K+</span>
+        <span class="stat-number">100K+</span>
         <span class="stat-label">Trees Planted</span>
       </div>
       <div class="stat-item glass-card">
-        <span class="stat-number">500+</span>
-        <span class="stat-label">Farmers Supported</span>
+        <span class="stat-number">40+</span>
+        <span class="stat-label">Acres of land planted</span>
       </div>
     </div>
   </div>
@@ -102,8 +101,6 @@
     <!-- Always-visible Overlay -->
     <div class="about-overlay d-flex align-items-center p-5" style="opacity: 1 !important;">
       <div class="text-white">
-        <h2 class="display-3 fw-bold mb-4">Growing Kenya's Green Future</h2>
-        <p class="lead fs-2 mb-5">Empowering communities through sustainable agriculture and reforestation</p>
         <a href="/service" class="btn btn-success btn-lg px-5 py-3 rounded-pill fs-4">
           <i class="fas fa-seedling me-2"></i>Explore Our Impact
         </a>
@@ -117,10 +114,9 @@
         <div class="container py-5">
           <div class="px-lg-5">
             <span class="badge bg-light text-success fs-6 mb-3 px-4 py-2 rounded-pill border border-success">Our Mission</span>
-            <h2 class="display-4 fw-bold text-dark mb-4">Cultivating <span class="text-success">Sustainable</span> Change</h2>
+            <h2 class="display-4 fw-bold text-dark mb-4">Restoring tree cover where <span class="text-success">Kenya</span> needs it most</h2>
             <p class="lead text-muted mb-5">
-              At Green Future Society, we're transforming Kenya's landscape through innovative agroforestry, community empowerment, 
-              and climate-smart solutions that benefit both people and planet.
+              At Green Future Society, we are committed to creating equity in Kenya’s climate future by restoring tree cover in counties with critical gaps.
             </p>          
             <div class="row g-4">
               <div class="col-md-6">
@@ -132,15 +128,12 @@
                       </div>
                       <h3 class="card-title mb-0 text-dark fs-4">Our Journey</h3>
                     </div>
-                    <p class="card-text text-muted">
-                      Founded in 2015, we've grown from a local initiative to a national force for environmental change across Western Kenya.
-                    </p>
+                    
                     <div class="mt-3 pt-3 border-top">
                       <div class="d-flex align-items-center">
                         <i class="fas fa-calendar-check text-success me-3 fs-5"></i>
                         <div class="text-center p-3 rounded" style="background-color: #e6f4ea; max-width: 250px;">
-                          <p class="mb-1 text-uppercase text-muted small fw-semibold">Years of Impact</p>
-                          <h4 class="mb-0 text-success fw-bold">8+</h4>
+                          <h4 class="mb-0 text-success fw-bold">About Us</h4>
                         </div>
                       </div>
                     </div>
@@ -159,17 +152,14 @@
                       <div class="d-flex align-items-center justify-content-center border border-success border-2 p-3 rounded-circle me-3 flex-shrink-0" style="width: 60px; height: 60px;">
                         <i class="fas fa-bullseye text-success fs-4"></i>
                       </div>
-                      <h3 class="card-title mb-0 text-dark fs-4">Our Vision</h3>
+                      <h3 class="card-title mb-0 text-dark fs-4">Green Impact</h3>
                     </div>
-                    <p class="card-text text-muted">
-                      Sustainable agriculture and thriving forests coexisting to create resilient ecosystems for future generations.
-                    </p>
+                
                     <div class="mt-3 pt-3 border-top">
                       <div class="d-flex align-items-center">
                         <i class="fas fa-tree text-success me-3 fs-5"></i>
                         <div class="text-center p-3 rounded" style="background-color: #e6f4ea; max-width: 250px;">
-                          <p class="mb-1 text-uppercase text-muted small fw-semibold">Forest Target</p>
-                          <h4 class="mb-0 text-success fw-bold">30% by 2030</h4>
+                          <h4 class="mb-0 text-success fw-bold"> Solutions</h4>
                         </div>
                       </div>
                     </div>
@@ -249,6 +239,175 @@
     </div>
   </div>
 </section>
+<!-- Tree Cover Map Section -->
+<section class="map-section py-6 bg-white" aria-labelledby="map-heading">
+  <div class="container">
+    <div class="row justify-content-center text-center mb-4">
+      <div class="col-lg-10">
+        <span class="badge brand-badge mb-3 px-4 py-2 rounded-pill">Our Green Footprint</span>
+        <h2 id="map-heading" class="display-5 fw-bold text-dark mb-3">
+          Tree Cover Across <span class="brand-highlight">Kenya</span>
+        </h2>
+        <p class="lead text-muted mb-4">
+          Visualizing Kenya's forest coverage as part of our mission to grow tree cover from 
+          <strong>12% today</strong> to <strong>30% by 2030</strong>.
+        </p>
+        
+        <!-- Mission Counties Alert -->
+        <div class="alert alert-warning border-0 shadow-sm mb-4" role="alert" style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); border-left: 4px solid #856404;">
+          <div class="d-flex align-items-center">
+            <i class="fas fa-exclamation-triangle text-warning me-3 fs-4"></i>
+            <div class="text-start">
+              <h5 class="alert-heading mb-2">🎯 Priority Focus Areas</h5>
+              <p class="mb-0">
+                <strong>9 counties</strong> identified with critically low tree coverage (&lt;9%) requiring immediate intervention. 
+                These areas face severe climate risks and ecosystem degradation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mission Counties Statistics Row -->
+    <div class="row mb-5">
+      <div class="col-12">
+        <div class="card border-0 shadow-sm" style="background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+          <div class="card-body py-4">
+            <div class="row text-center">
+              <div class="col-6 col-md-3">
+                <div class="border-end border-2 border-light">
+                  <h3 class="display-6 fw-bold text-danger mb-1">3</h3>
+                  <p class="text-muted mb-0 small">Critical Priority<br><span class="badge bg-danger">&lt;5% Cover</span></p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="border-end border-2 border-light">
+                  <h3 class="display-6 fw-bold text-warning mb-1">5</h3>
+                  <p class="text-muted mb-0 small">High Priority<br><span class="badge bg-warning">5-9% Cover</span></p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <div class="border-end border-2 border-light">
+                  <h3 class="display-6 fw-bold text-primary mb-1">5.8%</h3>
+                  <p class="text-muted mb-0 small">Average Coverage<br><span class="text-muted">Mission Counties</span></p>
+                </div>
+              </div>
+              <div class="col-6 col-md-3">
+                <h3 class="display-6 fw-bold text-success mb-1">30%</h3>
+                <p class="text-muted mb-0 small">2030 Target<br><span class="badge bg-success">+24.2% Needed</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <!-- Map Container -->
+        <div class="position-relative">
+          <div id="kenyaMap" style="height: 600px; border-radius: 12px; overflow: hidden; border: 3px solid #e9ecef;"></div>
+          
+          <!-- Map Instructions Overlay -->
+          <div class="position-absolute top-0 end-0 m-3" style="z-index: 1000;">
+            <div class="card border-0 shadow-sm" style="background: rgba(255, 255, 255, 0.95); max-width: 250px;">
+              <div class="card-body p-3">
+                <h6 class="card-title mb-2 text-dark">
+                  <i class="fas fa-info-circle text-primary me-2"></i>Interactive Map
+                </h6>
+                <ul class="list-unstyled mb-0 small text-muted">
+                  <li><i class="fas fa-mouse-pointer me-2 text-success"></i>Click counties for details</li>
+                  <li><i class="fas fa-search me-2 text-info"></i>Zoom to explore regions</li>
+                  <li><i class="fas fa-bullseye me-2 text-danger"></i>Red = Priority areas</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mission Counties Quick Reference -->
+        <div class="mt-4">
+          <div class="card border-0 shadow-sm">
+            <div class="card-header bg-transparent border-0 pb-0">
+              <h5 class="mb-0 text-dark">
+                <i class="fas fa-map-marked-alt me-2 text-danger"></i>
+                Mission Priority Counties
+              </h5>
+            </div>
+            <div class="card-body pt-3">
+              <div class="row g-3">
+                <!-- Northern Region -->
+                <div class="col-md-4">
+                  <div class="border-start border-4 border-danger ps-3">
+                    <h6 class="text-danger fw-bold mb-2">Northern Counties</h6>
+                    <div class="small text-muted">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Marsabit</span>
+                        <span class="badge bg-danger">2.06%</span>
+                      </div>
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Mandera</span>
+                        <span class="badge bg-danger">3.61%</span>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <span>Wajir</span>
+                        <span class="badge bg-danger">4.45%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Western Region -->
+                <div class="col-md-4">
+                  <div class="border-start border-4 border-warning ps-3">
+                    <h6 class="text-warning fw-bold mb-2">Western Counties</h6>
+                    <div class="small text-muted">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Siaya</span>
+                        <span class="badge bg-warning">5.27%</span>
+                      </div>
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Kisumu</span>
+                        <span class="badge bg-warning">8.85%</span>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <span>Busia</span>
+                        <span class="badge bg-warning">8.39%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Eastern & Coastal -->
+                <div class="col-md-4">
+                  <div class="border-start border-4 border-info ps-3">
+                    <h6 class="text-info fw-bold mb-2">Eastern & Coastal</h6>
+                    <div class="small text-muted">
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Machakos</span>
+                        <span class="badge bg-secondary">6.03%</span>
+                      </div>
+                      <div class="d-flex justify-content-between mb-1">
+                        <span>Isiolo</span>
+                        <span class="badge bg-secondary">6.7%</span>
+                      </div>
+                      <div class="d-flex justify-content-between">
+                        <span>Taita Taveta</span>
+                        <span class="badge bg-secondary">6.87%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 {% endblock %}
 
@@ -339,6 +498,383 @@
 </section>
 <!-- Counter Animation Script -->
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Initialize map
+    var map = L.map('kenyaMap').setView([0.0236, 37.9062], 6);
+
+    // Base layers
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    });
+
+    var satellite = L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap, Humanitarian OSM'
+    });
+
+    osm.addTo(map); // default
+
+    // Mission-critical counties with detailed data
+    var missionCounties = {
+        "Marsabit": {
+            treeCover: 2.06,
+            forestCover: "Very low",
+            priority: "critical",
+            reason: "Arid/semi-arid, sparse trees, low rainfall; degradation, climate change risks",
+            target: 30,
+            region: "Northern"
+        },
+        "Mandera": {
+            treeCover: 3.61,
+            forestCover: "Very low",
+            priority: "critical",
+            reason: "Highly dry region, deforestation, vulnerable ecosystem",
+            target: 30,
+            region: "Northern"
+        },
+        "Wajir": {
+            treeCover: 4.45,
+            forestCover: "Very low",
+            priority: "critical",
+            reason: "ASAL region (arid and semi-arid lands); drought vulnerability",
+            target: 30,
+            region: "Northern"
+        },
+        "Siaya": {
+            treeCover: 5.27,
+            forestCover: 0.23,
+            priority: "critical",
+            reason: "Despite rainfall, loss due to human pressure, land conversion",
+            target: 30,
+            region: "Western"
+        },
+        "Machakos": {
+            treeCover: 6.03,
+            forestCover: "Low",
+            priority: "high",
+            reason: "Population growth, land use change, urbanization reducing tree cover",
+            target: 30,
+            region: "Eastern"
+        },
+        "Isiolo": {
+            treeCover: 6.7,
+            forestCover: "Low",
+            priority: "high",
+            reason: "ASAL, degraded lands, droughts, pastoralism pressures",
+            target: 30,
+            region: "Eastern"
+        },
+        "Kisumu": {
+            treeCover: 8.85,
+            forestCover: 0.44,
+            priority: "high",
+            reason: "Lake Victoria Basin counties, high human activity, low forest in catchments",
+            target: 30,
+            region: "Western"
+        },
+        "Busia": {
+            treeCover: 8.39,
+            forestCover: 0.53,
+            priority: "high",
+            reason: "Rainfall adequate but human land use has cut forest cover dramatically",
+            target: 30,
+            region: "Western"
+        },
+        "Taita Taveta": {
+            treeCover: 6.87,
+            forestCover: "Moderate",
+            priority: "medium",
+            reason: "Used for agriculture, but also near some forested/coastal/mountain regions. Potential to restore",
+            target: 30,
+            region: "Coast"
+        }
+    };
+
+    // Other counties with general data
+    var otherCounties = {
+        "Kakamega": {treeCover: 18, target: 30, priority: "low"},
+        "Nairobi": {treeCover: 15, target: 30, priority: "medium"},
+        "Mombasa": {treeCover: 5, target: 30, priority: "high"},
+        "Nakuru": {treeCover: 12, target: 30, priority: "medium"},
+        "Kiambu": {treeCover: 14, target: 30, priority: "medium"}
+    };
+
+    // Color scheme based on priority and tree cover
+    function getColor(county, treeCover, priority) {
+        if (missionCounties[county]) {
+            // Special colors for mission counties
+            switch(priority) {
+                case 'critical': return '#8B0000'; // Dark red
+                case 'high': return '#FF4500';     // Orange red
+                case 'medium': return '#FF8C00';   // Dark orange
+                default: return '#FFA500';        // Orange
+            }
+        } else {
+            // Regular color scheme for other counties
+            return treeCover > 20 ? '#006400' :
+                   treeCover > 10 ? '#66bb66' :
+                   treeCover > 5  ? '#c2e699' :
+                                    '#f2f0f7';
+        }
+    }
+
+    function style(feature) {
+        let county = feature.properties.COUNTY || feature.properties.NAME_1;
+        let data = missionCounties[county] || otherCounties[county];
+        let treeCover = data?.treeCover || 0;
+        let priority = data?.priority || 'low';
+        
+        return {
+            fillColor: getColor(county, treeCover, priority),
+            weight: missionCounties[county] ? 3 : 1,
+            color: missionCounties[county] ? '#ffffff' : '#888888',
+            dashArray: missionCounties[county] ? '0' : '3',
+            fillOpacity: 0.8,
+            className: missionCounties[county] ? 'mission-county' : 'regular-county'
+        };
+    }
+
+    function onEachFeature(feature, layer) {
+        let county = feature.properties.COUNTY || feature.properties.NAME_1;
+        let missionData = missionCounties[county];
+        let otherData = otherCounties[county];
+        
+        let popupContent = `<div style="max-width: 300px; font-family: Arial, sans-serif;">`;
+        
+        if (missionData) {
+            // Enhanced popup for mission counties
+            popupContent += `
+                <h4 style="color: #8B0000; margin: 0 0 10px 0; border-bottom: 2px solid #8B0000; padding-bottom: 5px;">
+                    🎯 ${county} County
+                </h4>
+                <div style="background: #fff3f3; padding: 10px; border-radius: 5px; margin-bottom: 10px;">
+                    <strong>🌲 Tree Coverage:</strong> ${missionData.treeCover}%<br>
+                    <strong>🌳 Forest Cover:</strong> ${typeof missionData.forestCover === 'number' ? missionData.forestCover + '%' : missionData.forestCover}<br>
+                    <strong>🎯 Target:</strong> ${missionData.target}%<br>
+                    <strong>📍 Region:</strong> ${missionData.region}<br>
+                    <strong>⚠️ Priority:</strong> <span style="color: ${missionData.priority === 'critical' ? '#8B0000' : '#FF4500'}; font-weight: bold; text-transform: uppercase;">${missionData.priority}</span>
+                </div>
+                <div style="background: #f8f9fa; padding: 10px; border-radius: 5px; border-left: 4px solid #8B0000;">
+                    <strong>Why It Needs More Trees:</strong><br>
+                    <em>${missionData.reason}</em>
+                </div>
+                <div style="margin-top: 10px; text-align: center;">
+                    <small style="color: #666;">🌱 Mission Priority County</small>
+                </div>
+            `;
+        } else if (otherData) {
+            // Standard popup for other counties
+            popupContent += `
+                <h4 style="color: #28a745; margin: 0 0 10px 0;">
+                    ${county} County
+                </h4>
+                <strong>🌳 Tree Cover:</strong> ${otherData.treeCover}%<br>
+                <strong>🎯 Target:</strong> ${otherData.target}%<br>
+                <strong>📈 Gap to Target:</strong> ${otherData.target - otherData.treeCover}%
+            `;
+        } else {
+            popupContent += `
+                <h4>${county} County</h4>
+                <p>Tree cover data being assessed...</p>
+            `;
+        }
+        
+        popupContent += `</div>`;
+        
+        layer.bindPopup(popupContent);
+        
+        // Add hover effects for mission counties
+        if (missionData) {
+            layer.on('mouseover', function(e) {
+                this.setStyle({
+                    weight: 5,
+                    fillOpacity: 0.9
+                });
+            });
+            
+            layer.on('mouseout', function(e) {
+                this.setStyle({
+                    weight: 3,
+                    fillOpacity: 0.8
+                });
+            });
+        }
+    }
+
+    // Load and style the counties
+    fetch("{% static 'json/kenya_counties.geojson' %}")
+        .then(res => res.json())
+        .then(data => {
+            L.geoJson(data, {
+                style: style,
+                onEachFeature: onEachFeature
+            }).addTo(map);
+        })
+        .catch(error => {
+            console.error('Error loading GeoJSON:', error);
+            // Fallback: Add some markers for mission counties
+            addFallbackMarkers();
+        });
+
+    // Fallback function to add markers if GeoJSON fails
+    function addFallbackMarkers() {
+        const countyCoordinates = {
+            "Marsabit": [2.3274, 37.9906],
+            "Mandera": [3.9366, 41.8697],
+            "Wajir": [1.7471, 40.0573],
+            "Siaya": [0.0610, 34.2888],
+            "Machakos": [-1.5177, 37.2634],
+            "Isiolo": [0.3496, 37.5843],
+            "Kisumu": [-0.1022, 34.7617],
+            "Busia": [0.4601, 34.1115],
+            "Taita Taveta": [-3.3197, 38.3473]
+        };
+
+        Object.keys(missionCounties).forEach(county => {
+            if (countyCoordinates[county]) {
+                const data = missionCounties[county];
+                const color = data.priority === 'critical' ? '#8B0000' : '#FF4500';
+                
+                L.circleMarker(countyCoordinates[county], {
+                    radius: 8,
+                    fillColor: color,
+                    color: '#ffffff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.8
+                }).addTo(map).bindPopup(`
+                    <strong>${county} County</strong><br>
+                    Tree Cover: ${data.treeCover}%<br>
+                    Priority: ${data.priority}
+                `);
+            }
+        });
+    }
+
+    // Enhanced legend
+    var legend = L.control({position: 'bottomright'});
+    legend.onAdd = function () {
+        var div = L.DomUtil.create('div', 'info legend');
+        div.style.cssText = 'background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); font-size: 12px; line-height: 1.4;';
+        
+        div.innerHTML = `
+            <h4 style="margin: 0 0 10px 0; color: #333;">Tree Cover & Mission Priority</h4>
+            
+            <div style="margin-bottom: 10px;">
+                <strong>🎯 Mission Counties:</strong><br>
+                <i style="background: #8B0000; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> Critical Priority (0-5%)<br>
+                <i style="background: #FF4500; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> High Priority (5-9%)<br>
+                <i style="background: #FF8C00; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> Medium Priority (6-7%)<br>
+            </div>
+            
+            <div>
+                <strong>🌳 Other Counties:</strong><br>
+                <i style="background: #006400; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> 20%+ Tree Cover<br>
+                <i style="background: #66bb66; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> 10-20% Tree Cover<br>
+                <i style="background: #c2e699; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> 5-10% Tree Cover<br>
+                <i style="background: #f2f0f7; width: 18px; height: 18px; display: inline-block; margin-right: 5px; border-radius: 3px;"></i> &lt;5% Tree Cover<br>
+            </div>
+            
+            <div style="margin-top: 10px; padding-top: 8px; border-top: 1px solid #eee; font-size: 11px; color: #666;">
+                Target: 30% by 2030
+            </div>
+        `;
+        
+        return div;
+    };
+    legend.addTo(map);
+
+    // Add mission county summary control
+    var missionSummary = L.control({position: 'topleft'});
+    missionSummary.onAdd = function() {
+        var div = L.DomUtil.create('div', 'mission-summary');
+        div.style.cssText = 'background: rgba(255, 255, 255, 0.95); padding: 15px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); max-width: 300px; font-size: 13px;';
+        
+        const criticalCount = Object.values(missionCounties).filter(c => c.priority === 'critical').length;
+        const highCount = Object.values(missionCounties).filter(c => c.priority === 'high').length;
+        const avgTreeCover = (Object.values(missionCounties).reduce((sum, c) => sum + c.treeCover, 0) / Object.keys(missionCounties).length).toFixed(1);
+        
+        div.innerHTML = `
+            <h4 style="margin: 0 0 10px 0; color: #8B0000;">🎯 Mission Overview</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; font-size: 12px;">
+                <div style="text-align: center; padding: 8px; background: #fff3f3; border-radius: 4px;">
+                    <div style="font-size: 16px; font-weight: bold; color: #8B0000;">${Object.keys(missionCounties).length}</div>
+                    <div>Priority Counties</div>
+                </div>
+                <div style="text-align: center; padding: 8px; background: #f8f9fa; border-radius: 4px;">
+                    <div style="font-size: 16px; font-weight: bold; color: #28a745;">${avgTreeCover}%</div>
+                    <div>Avg. Tree Cover</div>
+                </div>
+            </div>
+            <div style="margin-top: 8px; font-size: 11px; color: #666;">
+                ${criticalCount} Critical • ${highCount} High Priority
+            </div>
+        `;
+        
+        return div;
+    };
+    missionSummary.addTo(map);
+
+    // Layers control
+    var baseMaps = {
+        "OpenStreetMap": osm,
+        "Humanitarian": satellite
+    };
+
+    L.control.layers(baseMaps, null, {collapsed: false}).addTo(map);
+
+    // Add custom CSS for mission counties
+    var style = document.createElement('style');
+    style.textContent = `
+        .mission-county {
+            cursor: pointer !important;
+        }
+        .leaflet-popup-content {
+            margin: 8px 12px !important;
+        }
+        .leaflet-popup-content h4 {
+            font-size: 16px !important;
+        }
+    `;
+    document.head.appendChild(style);
+});
+  document.addEventListener('DOMContentLoaded', () => {
+    const counters = document.querySelectorAll('.counter');
+
+    const options = {
+      threshold: 0.5
+    };
+
+    const startCounter = (counter) => {
+      const target = +counter.getAttribute('data-target');
+      const speed = 200;
+      const increment = target / speed;
+
+      const updateCount = () => {
+        const count = +counter.innerText;
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 15);
+        } else {
+          counter.innerText = target;
+        }
+      };
+
+      updateCount();
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          startCounter(entry.target);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, options);
+
+    counters.forEach(counter => {
+      observer.observe(counter);
+    });
+  });
 document.addEventListener('DOMContentLoaded', () => {
     const counters = document.querySelectorAll('.counter');
 
