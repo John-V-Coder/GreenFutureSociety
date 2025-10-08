@@ -29,8 +29,19 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
-# Application definition
 
+# CKEditor Configuration
+CKEDITOR_UPLOAD_PATH = "uploads/"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
+    },
+}
+
+# Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -40,6 +51,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'societyapp',
     'authcart',
+    'ckeditor',
+    'ckeditor_uploader',
 ]
 
 MIDDLEWARE = [
